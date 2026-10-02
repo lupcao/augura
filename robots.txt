@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lupcao.github.io/augura/sitemap.xml

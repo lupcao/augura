@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>A result from Augura</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+<p class="back"><a href="../tools.html">&larr; All free tools</a></p>
+<h1 id="title">A result from Augura</h1>
+<p class="lead" id="question"></p>
+<div class="tool">
+  <div class="result" id="out" aria-live="polite">&nbsp;</div>
+  <button id="spin" hidden>Spin again</button>
+  <p class="muted" id="items"></p>
+</div>
+<p><a id="try" href="../tools.html">Try it yourself</a> &middot; free, no sign-up</p>
+<div class="cta">
+  <strong>Get Augura for iPhone.</strong> Coins, dice, Tarot, I Ching, runes and more, from widgets,
+  Control Center and Apple Watch. No ads, no account, no tracking.
+  <a href="../index.html#get-the-app">Get the app</a>
+</div>
+</main>
+<script src="../tools.js"></script>
+<script>
+// Link format (all after the #, so nothing reaches a server): #<mode>/<result>/<question>
+// or #list/<item>,<item>,... with every part percent-encoded.
+var tools = {
+  coin: ["Coin Flip", "../coin-flip.html"],
+  dice: ["Dice Roller", "../dice-roller.html"],
+  yesNo: ["Yes or No", "../yes-or-no.html"],
+  number: ["Random Number", "../random-number.html"],
+  list: ["Decision Wheel", "../decision-wheel.html"]
+};
+function dec(s) { try { return decodeURIComponent(s); } catch (e) { return s; } }
+var parts = location.hash.replace(/^#/, "").split("/");
+var mode = dec(parts[0] || "");
+if (tools[mode]) {
+  $("title").textContent = tools[mode][0];
+  $("try").href = tools[mode][1];
+}
+if (mode === "list" && parts[1]) {
+  var items = parts[1].split(",").map(dec).filter(Boolean);
+  var spin = function () { $("out").textContent = items[randInt(items.length)]; };
+  $("question").textContent = "A list shared from Augura. Spin it!";
+  $("items").textContent = items.join(" · ");
+  $("spin").hidden = false;
+  $("spin").onclick = spin;
+  spin();
+} else if (parts[1]) {
+  $("out").textContent = dec(parts[1]);
+  if (parts[2]) $("question").textContent = dec(parts.slice(2).join("/"));
+} else {
+  $("out").textContent = "Nothing here yet";
+}
+// textContent only, never innerHTML: a shared link cannot inject markup.
+</script>
+</body>
+</html>

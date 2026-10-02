@@ -10,3 +10,15 @@ a { color: var(--accent); }
 .lead { font-size: 1.1em; color: var(--muted); }
 ul { padding-left: 1.2em; }
 li { margin: 0.4em 0; }
+.tool { background: var(--panel); border-radius: 16px; padding: 24px 16px; text-align: center; }
+.result { font-size: 2.6em; font-weight: 700; min-height: 1.4em; margin: 0.2em 0 0.6em; word-break: break-word; }
+button { font: inherit; font-weight: 600; color: #fff; background: var(--accent); border: 0;
+  border-radius: 12px; padding: 12px 28px; cursor: pointer; }
+input, textarea, select { font: inherit; color: var(--text); background: var(--bg);
+  border: 1px solid var(--muted); border-radius: 8px; padding: 8px; max-width: 100%; }
+input[type=number] { width: 6em; }
+textarea { width: 100%; min-height: 8em; }
+label { display: inline-block; margin: 0.4em 0.6em; }
+.cta { margin-top: 2em; padding: 16px; border: 1px solid var(--accent); border-radius: 12px; }
+.tool-list a { font-weight: 600; }
+#wheel { max-width: 100%; height: auto; }

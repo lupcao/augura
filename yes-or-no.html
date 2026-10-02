@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yes or No – Decision Maker | Augura</title>
+<meta name="description" content="Can't decide? Get a random yes or no answer. Free, no sign-up.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<p class="back"><a href="tools.html">&larr; All free tools</a></p>
+<h1>Yes or No</h1>
+<p class="lead">Think of your question, then tap the button.</p>
+<div class="tool">
+  <div class="result" id="out" aria-live="polite">&nbsp;</div>
+  <button id="go">Ask</button>
+</div>
+<div class="cta">
+  <strong>Get Augura for iPhone.</strong> Get a yes or no from a widget, a Control Center button or your
+  Apple Watch. No ads, no account, no tracking. <a href="index.html#get-the-app">Get the app</a>
+</div>
+</main>
+<script src="tools.js"></script>
+<script>
+$("go").onclick = function () { $("out").textContent = randInt(2) === 0 ? "Yes" : "No"; };
+</script>
+</body>
+</html>

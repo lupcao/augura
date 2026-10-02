@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dice Roller – d4 to d100 | Augura</title>
+<meta name="description" content="Roll one or more dice online: d4, d6, d8, d10, d12, d20 and d100. Free and fair.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<p class="back"><a href="tools.html">&larr; All free tools</a></p>
+<h1>Dice Roller</h1>
+<p class="lead">Roll up to 20 dice at once.</p>
+<div class="tool">
+  <div class="result" id="out" aria-live="polite">&nbsp;</div>
+  <p class="muted" id="detail">&nbsp;</p>
+  <p>
+    <label>Dice <input type="number" id="count" value="1" min="1" max="20"></label>
+    <label>Sides
+      <select id="sides">
+        <option>4</option><option selected>6</option><option>8</option><option>10</option>
+        <option>12</option><option>20</option><option>100</option>
+      </select>
+    </label>
+  </p>
+  <button id="go">Roll</button>
+</div>
+<div class="cta">
+  <strong>Get Augura for iPhone.</strong> Roll dice from a widget, a Control Center button or your
+  Apple Watch. No ads, no account, no tracking. <a href="index.html#get-the-app">Get the app</a>
+</div>
+</main>
+<script src="tools.js"></script>
+<script>
+$("go").onclick = function () {
+  var n = parseInt($("count").value, 10);
+  if (isNaN(n) || n < 1) n = 1;
+  if (n > 20) n = 20;
+  $("count").value = n;
+  var sides = parseInt($("sides").value, 10), rolls = [], sum = 0;
+  for (var i = 0; i < n; i++) { var r = randRange(1, sides); rolls.push(r); sum += r; }
+  $("out").textContent = sum;
+  $("detail").textContent = n > 1 ? rolls.join(" + ") + " = " + sum : "d" + sides;
+};
+</script>
+</body>
+</html>

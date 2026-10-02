@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coin Flip – Heads or Tails | Augura</title>
+<meta name="description" content="Flip a fair virtual coin. Heads or tails, free, no sign-up.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<p class="back"><a href="tools.html">&larr; All free tools</a></p>
+<h1>Coin Flip</h1>
+<p class="lead">Heads or tails? Tap the button and let chance decide.</p>
+<div class="tool">
+  <div class="result" id="out" aria-live="polite">&nbsp;</div>
+  <button id="go">Flip the coin</button>
+  <p class="muted" id="tally"></p>
+</div>
+<div class="cta">
+  <strong>Get Augura for iPhone.</strong> Flip a coin from a widget, a Control Center button or your
+  Apple Watch. No ads, no account, no tracking. <a href="index.html#get-the-app">Get the app</a>
+</div>
+</main>
+<script src="tools.js"></script>
+<script>
+var heads = 0, tails = 0;
+$("go").onclick = function () {
+  var h = randInt(2) === 0;
+  if (h) heads++; else tails++;
+  $("out").textContent = h ? "Heads" : "Tails";
+  $("tally").textContent = "Heads " + heads + " · Tails " + tails;
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Random Number Generator | Augura</title>
+<meta name="description" content="Pick a random number between any two values. Free, fair and private.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<p class="back"><a href="tools.html">&larr; All free tools</a></p>
+<h1>Random Number Generator</h1>
+<p class="lead">Pick a whole number between two values (both included).</p>
+<div class="tool">
+  <div class="result" id="out" aria-live="polite">&nbsp;</div>
+  <p>
+    <label>From <input type="number" id="min" value="1"></label>
+    <label>To <input type="number" id="max" value="100"></label>
+  </p>
+  <button id="go">Generate</button>
+  <p class="muted" id="msg"></p>
+</div>
+<div class="cta">
+  <strong>Get Augura for iPhone.</strong> Random numbers from a widget, a Control Center button or your
+  Apple Watch. No ads, no account, no tracking. <a href="index.html#get-the-app">Get the app</a>
+</div>
+</main>
+<script src="tools.js"></script>
+<script>
+$("go").onclick = function () {
+  var a = parseInt($("min").value, 10), b = parseInt($("max").value, 10);
+  if (isNaN(a) || isNaN(b)) { $("msg").textContent = "Enter two whole numbers."; return; }
+  if (a > b) { var t = a; a = b; b = t; }
+  if (b - a >= 4294967295) { $("msg").textContent = "Range is too large."; return; }
+  $("msg").textContent = "";
+  $("out").textContent = randRange(a, b);
+};
+</script>
+</body>
+</html>
