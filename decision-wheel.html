@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decision Wheel – Spin to Choose | Augura</title>
+<meta name="description" content="Type your options, spin the wheel and let chance pick one. Free and private: nothing leaves your browser.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<p class="back"><a href="tools.html">&larr; All free tools</a></p>
+<h1>Decision Wheel</h1>
+<p class="lead">Enter one option per line, then spin.</p>
+<div class="tool">
+  <canvas id="wheel" width="320" height="320" aria-label="Decision wheel"></canvas>
+  <div class="result" id="out" aria-live="polite">&nbsp;</div>
+  <button id="go">Spin</button>
+  <p><textarea id="opts" aria-label="Options, one per line">Pizza
+Sushi
+Tacos
+Salad</textarea></p>
+</div>
+<div class="cta">
+  <strong>Get Augura for iPhone.</strong> Spin a wheel from a widget, a Control Center button or your
+  Apple Watch. No ads, no account, no tracking. <a href="index.html#get-the-app">Get the app</a>
+</div>
+</main>
+<script src="tools.js"></script>
+<script>
+var canvas = $("wheel"), ctx = canvas.getContext("2d"), angle = 0, spinning = false;
+var colors = ["#4f9bff", "#7a5cff", "#2fb8a0", "#e0885a", "#d4577f", "#8fb84a"];
+function options() {
+  return $("opts").value.split("\n").map(function (s) { return s.trim(); })
+    .filter(function (s) { return s.length > 0; }).slice(0, 40);
+}
+function draw() {
+  var o = options(), n = o.length, c = 160, tau = 2 * Math.PI;
+  ctx.clearRect(0, 0, 320, 320);
+  if (n === 0) return;
+  var step = tau / n;
+  for (var i = 0; i < n; i++) {
+    var a0 = angle + i * step;
+    ctx.beginPath(); ctx.moveTo(c, c); ctx.arc(c, c, 150, a0, a0 + step); ctx.closePath();
+    ctx.fillStyle = colors[i % colors.length]; ctx.fill();
+    ctx.save(); ctx.translate(c, c); ctx.rotate(a0 + step / 2);
+    ctx.fillStyle = "#fff"; ctx.font = "16px sans-serif"; ctx.textAlign = "right";
+    var label = o[i].length > 16 ? o[i].slice(0, 15) + "…" : o[i];
+    ctx.fillText(label, 138, 5); ctx.restore();
+  }
+  // pointer at the top
+  ctx.beginPath(); ctx.moveTo(c - 10, 2); ctx.lineTo(c + 10, 2); ctx.lineTo(c, 24); ctx.closePath();
+  ctx.fillStyle = "#fff"; ctx.fill();
+}
+$("opts").oninput = function () { if (!spinning) { draw(); } };
+$("go").onclick = function () {
+  var o = options(), n = o.length;
+  if (n < 2 || spinning) { if (n < 2) $("out").textContent = "Add at least two options."; return; }
+  var tau = 2 * Math.PI, step = tau / n, win = randInt(n);
+  // Winner's slice centre must end under the pointer at the top (angle -PI/2).
+  var target = -Math.PI / 2 - (win + 0.5) * step;
+  var start = angle, turns = 5 + randInt(3);
+  var end = start +(((target - start) % tau) + tau) % tau + turns * tau;
+  var t0 = null, dur = 4000;
+  spinning = true; $("out").textContent = " ";
+  function frame(ts) {
+    if (t0 === null) t0 = ts;
+    var p = Math.min((ts - t0) / dur, 1), e = 1 - Math.pow(1 - p, 3);
+    angle = start + (end - start) * e;
+    draw();
+    if (p < 1) { requestAnimationFrame(frame); }
+    else { spinning = false; angle = angle % tau; $("out").textContent = o[win]; }
+  }
+  requestAnimationFrame(frame);
+};
+draw();
+</script>
+</body>
+</html>
