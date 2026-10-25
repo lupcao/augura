@@ -1,0 +1,21 @@
+/* Fair Draw verifier page (with ../style.css). */
+h2 { font-size: 1.2em; margin: 0 0 0.6em; }
+section { margin-top: 1.5em; }
+.tool { text-align: left; }
+.status { font-size: 1.15em; font-weight: 600; }
+.status.good, .claim-status.good { color: #5fd38d; }
+.status.bad, .claim-status.bad { color: #ff8a80; }
+.winners { font-size: 1.8em; font-weight: 700; margin: 0.2em 0 0.8em; padding-left: 1.4em; word-break: break-word; }
+.winners .muted { font-size: 0.45em; font-weight: 400; }
+.entries { word-break: break-word; }
+.facts { margin: 0 0 1em; }
+.facts dt { color: var(--muted); font-size: 0.9em; margin-top: 0.6em; }
+.facts dd { margin: 0.1em 0 0; }
+code { overflow-wrap: anywhere; font-size: 0.9em; }
+.small { font-size: 0.9em; }
+label { display: block; margin-bottom: 0.4em; color: var(--muted); }
+textarea { box-sizing: border-box; min-height: 4em; }
+.paste button { margin-top: 0.6em; }
+.claim { border: 1px dashed var(--muted); border-radius: 12px; padding: 16px; }
+.badge { font-size: 0.7em; font-weight: 600; text-transform: uppercase; color: var(--bg);
+         background: var(--muted); border-radius: 6px; padding: 2px 6px; vertical-align: middle; }

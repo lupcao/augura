@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Fair Draw verifier</title>
+<link rel="canonical" href="https://augura.fyi/verify/">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="verify.css">
+</head>
+<body>
+<main>
+<p class="back"><a href="../index.html">&larr; Augura</a></p>
+<h1>Fair Draw verifier</h1>
+<p class="lead">Checks a Fair Draw from the Augura app right here in your browser. The link carries the
+receipt and the list after the <code>#</code>, which browsers never send to a server. Once loaded, this
+page makes no network requests, and nothing from the link leaves your browser.</p>
+
+<section class="tool" aria-labelledby="proof-title">
+  <h2 id="proof-title">Verified by your browser</h2>
+  <p id="status" class="status" role="status" aria-live="polite">Checking&hellip;</p>
+  <div id="proof" hidden>
+    <ol id="winners" class="winners"></ol>
+    <dl class="facts">
+      <dt>Randomness</dt><dd>drand quicknet round <span id="round"></span>, published <span id="round-time"></span></dd>
+      <dt>List</dt><dd><span id="entry-count"></span> entries, SHA-256 <code id="list-hash"></code></dd>
+      <dt>Signature</dt><dd><code id="signature"></code></dd>
+    </dl>
+    <details>
+      <summary>Every entry in the committed list</summary>
+      <ol id="entries" class="entries" start="0"></ol>
+    </details>
+    <p class="muted small">What this proves: the drand network signed round <span id="round-again"></span>
+    (checked against its built-in public key), the list is exactly the one in the receipt, and the winners
+    follow from that signature and list. It is fair if the list was fixed before that round was published;
+    Augura commits to the list first and only then waits for the round.</p>
+  </div>
+</section>
+
+<section class="paste" aria-labelledby="link-title">
+  <h2 id="link-title">Check another link</h2>
+  <label for="link">Paste a Fair Draw link or the whole receipt</label>
+  <textarea id="link" rows="3" spellcheck="false" autocomplete="off" placeholder="https://augura.fyi/verify/#r=&hellip;&amp;l=&hellip;"></textarea>
+  <button id="check" type="button">Verify</button>
+</section>
+
+<section class="claim" aria-labelledby="claim-title">
+  <h2 id="claim-title">Claimed result <span class="badge">not verified</span></h2>
+  <p class="muted small">Someone announced winners? Paste their names here, one per line, to compare them
+  with the verified result above. Whatever you type is only a claim: this box never changes the proof.</p>
+  <label for="claim">Claimed winners</label>
+  <textarea id="claim" rows="3" spellcheck="false" autocomplete="off"></textarea>
+  <p id="claim-status" class="claim-status" aria-live="polite"></p>
+</section>
+
+<p class="muted small">Open source details: the page runs <code>verifier.js</code> (bundled from
+@noble/curves and @noble/hashes, MIT) and the protocol <code>augura.fair-draw.v1</code>. Randomness:
+<a href="https://drand.love">drand</a> quicknet.</p>
+</main>
+<script type="module" src="ui.js"></script>
+</body>
+</html>

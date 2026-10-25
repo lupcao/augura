@@ -1,0 +1,22 @@
+{
+  "name": "augura-fair-draw-verifier",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Builds site/verify/verifier.js, the offline Fair Draw receipt verifier for https://augura.fyi/verify/",
+  "license": "UNLICENSED",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test test/verifier.test.mjs"
+  },
+  "dependencies": {
+    "@noble/curves": "2.4.0",
+    "@noble/hashes": "2.4.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}

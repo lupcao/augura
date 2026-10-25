@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="ja" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27;; img-src &#x27;self&#x27; data:; font-src &#x27;self&#x27;; connect-src &#x27;self&#x27;; manifest-src &#x27;self&#x27;; worker-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;">
+<meta name="referrer" content="no-referrer">
+<title>ランダムなトランプ | Augura</title>
+<meta name="description" content="52枚のデッキから、ジョーカーありでもなしでもトランプを1枚引きます。シャッフルするまで、引いたカードはデッキに戻りません。">
+<link rel="canonical" href="https://augura.fyi/ja/random-card.html">
+<link rel="alternate" hreflang="en" href="https://augura.fyi/random-card.html">
+<link rel="alternate" hreflang="de" href="https://augura.fyi/de/random-card.html">
+<link rel="alternate" hreflang="fr" href="https://augura.fyi/fr/random-card.html">
+<link rel="alternate" hreflang="it" href="https://augura.fyi/it/random-card.html">
+<link rel="alternate" hreflang="es" href="https://augura.fyi/es/random-card.html">
+<link rel="alternate" hreflang="pt-BR" href="https://augura.fyi/pt-br/random-card.html">
+<link rel="alternate" hreflang="nl" href="https://augura.fyi/nl/random-card.html">
+<link rel="alternate" hreflang="sv" href="https://augura.fyi/sv/random-card.html">
+<link rel="alternate" hreflang="pl" href="https://augura.fyi/pl/random-card.html">
+<link rel="alternate" hreflang="tr" href="https://augura.fyi/tr/random-card.html">
+<link rel="alternate" hreflang="ru" href="https://augura.fyi/ru/random-card.html">
+<link rel="alternate" hreflang="ja" href="https://augura.fyi/ja/random-card.html">
+<link rel="alternate" hreflang="ko" href="https://augura.fyi/ko/random-card.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://augura.fyi/zh-hans/random-card.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://augura.fyi/zh-hant/random-card.html">
+<link rel="alternate" hreflang="x-default" href="https://augura.fyi/random-card.html">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#03050b">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/img/icon-180.png">
+<link rel="stylesheet" href="/assets/site.3f80ce0b.css">
+<link rel="stylesheet" href="/assets/app.da288156.css">
+<link rel="manifest" href="/ja/manifest.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Augura">
+<meta property="og:title" content="ランダムなトランプ | Augura">
+<meta property="og:description" content="52枚のデッキから、ジョーカーありでもなしでもトランプを1枚引きます。シャッフルするまで、引いたカードはデッキに戻りません。">
+<meta property="og:url" content="https://augura.fyi/ja/random-card.html">
+<meta property="og:image" content="https://augura.fyi/img/og/og-ja.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Augura：偶然のための静かでプライベートな道具箱。iPhoneのスクリーンショット3枚つき">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta property="og:locale:alternate" content="it_IT">
+<meta property="og:locale:alternate" content="es_ES">
+<meta property="og:locale:alternate" content="pt_BR">
+<meta property="og:locale:alternate" content="nl_NL">
+<meta property="og:locale:alternate" content="sv_SE">
+<meta property="og:locale:alternate" content="pl_PL">
+<meta property="og:locale:alternate" content="tr_TR">
+<meta property="og:locale:alternate" content="ru_RU">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:locale:alternate" content="zh_CN">
+<meta property="og:locale:alternate" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","applicationCategory":"UtilitiesApplication","browserRequirements":"Requires JavaScript","inLanguage":"ja","isAccessibleForFree":true,"name":"ランダムなトランプ","offers":{"@type":"Offer","price":0,"priceCurrency":"USD"},"operatingSystem":"Any","url":"https://augura.fyi/ja/random-card.html"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://augura.fyi/ja/","name":"Augura","position":1},{"@type":"ListItem","item":"https://augura.fyi/ja/tools.html","name":"無料ツール","position":2},{"@type":"ListItem","item":"https://augura.fyi/ja/random-card.html","name":"ランダムなトランプ","position":3}]}]}</script>
+<script src="/assets/site.18f15d92.js" defer></script>
+</head>
+<body class="sky has-bar" data-page="landing">
+<svg xmlns="http://www.w3.org/2000/svg" class="sprite" aria-hidden="true" focusable="false">
+<symbol id="i-star4" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.5 14.2 9.8 22.5 12 14.2 14.2 12 22.5 9.8 14.2 1.5 12 9.8 9.8z"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></symbol>
+<symbol id="i-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></symbol>
+<symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11M8 7.2l4-3.7 4 3.7"/><path d="M8 10.5H6.5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H16"/></symbol>
+<symbol id="i-history" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.5-6"/><path d="M3.5 4.5V9H8"/><path d="M12 7.5V12l3 2"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.8"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="8.5" y="8.5" width="11" height="11" rx="2.5"/><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/></symbol>
+<symbol id="i-rock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M5 15.5 7.5 8l5-3 5.5 3.5 2 7-4 4H8.5z"/><path d="M7.5 8l3 4.5 7.5-4M10.5 12.5 8.5 19.5M10.5 12.5l9.5 3" opacity=".55"/></symbol>
+<symbol id="i-paper" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 3.5h8.5L19 8v12.5H6z"/><path d="M14.5 3.5V8H19M9 12h7M9 15.5h7" opacity=".7"/></symbol>
+<symbol id="i-scissors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="6.5" cy="17.5" r="2.8"/><circle cx="17.5" cy="17.5" r="2.8"/><path d="M8.5 15.5 18 4M15.5 15.5 6 4"/></symbol>
+<symbol id="e-heads" viewBox="0 0 100 100"><circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="5"/><path fill="currentColor" d="M60 20 64.6 37.4 82 42 64.6 46.6 60 64 55.4 46.6 38 42 55.4 37.4z"/></symbol>
+<symbol id="e-tails" viewBox="0 0 100 100"><path d="M58 18a33 33 0 1 0 24 48A27 27 0 0 1 58 18z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><path fill="currentColor" d="M70 30l2 5.5 5.5 2-5.5 2-2 5.5-2-5.5-5.5-2 5.5-2zM82 50l1.3 3.5 3.5 1.3-3.5 1.3L82 59.6l-1.3-3.5-3.5-1.3 3.5-1.3z"/></symbol>
+<symbol id="g-coin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><ellipse cx="12" cy="8.5" rx="8" ry="4.2"/><path d="M4 8.5v6c0 2.3 3.6 4.2 8 4.2s8-1.9 8-4.2v-6"/><path d="M4 11.6c0 2.3 3.6 4.2 8 4.2s8-1.9 8-4.2" opacity=".55"/></symbol>
+<symbol id="g-dice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><g fill="currentColor" stroke="none"><circle cx="8.3" cy="8.3" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="15.7" cy="15.7" r="1.5"/></g></symbol>
+<symbol id="g-yesNo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M8.6 8.6a3.5 3.5 0 1 1 5 3.2c-1 .5-1.6 1.3-1.6 2.4v.6"/><circle cx="12" cy="18.6" r=".7" fill="currentColor"/></symbol>
+<symbol id="g-number" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9.5 4 8 20M16 4l-1.5 16M4.5 9h15M4 15h15"/></symbol>
+<symbol id="g-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 6.5h11M9 12h11M9 17.5h11"/><g fill="currentColor" stroke="none"><circle cx="4.8" cy="6.5" r="1.3"/><circle cx="4.8" cy="12" r="1.3"/><circle cx="4.8" cy="17.5" r="1.3"/></g></symbol>
+<symbol id="g-letter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18 8 6l5 12M4.8 14h6.4"/><path d="M20 18v-5.2a2.6 2.6 0 0 0-4.8-1.3M20 15.4c-.2 1.7-1.4 2.8-2.8 2.8-1.3 0-2.2-.8-2.2-1.9 0-1.4 1.4-2 5-2"/></symbol>
+<symbol id="g-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3.8c3 3.4 6.8 5.7 6.8 9a3.4 3.4 0 0 1-5.6 2.6l1 4.4H9.8l1-4.4a3.4 3.4 0 0 1-5.6-2.6c0-3.3 3.8-5.6 6.8-9z"/></symbol>
+<symbol id="g-rps" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="6.5" cy="17.5" r="2.8"/><circle cx="17.5" cy="17.5" r="2.8"/><path d="M8.5 15.5 18 4M15.5 15.5 6 4"/></symbol>
+<symbol id="g-color" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3.5s6 6.4 6 10.6a6 6 0 0 1-12 0C6 9.9 12 3.5 12 3.5z"/><path d="M9.3 14.6a2.8 2.8 0 0 0 2.4 2.6" stroke-linecap="round" opacity=".6"/></symbol>
+<symbol id="g-date" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><circle cx="12" cy="14.5" r="1.4" fill="currentColor"/></symbol>
+<symbol id="g-groups" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="8" cy="8.5" r="2.8"/><circle cx="16.5" cy="8.5" r="2.8"/><path d="M3 19c.5-3 2.5-4.6 5-4.6s4.5 1.6 5 4.6M11.6 15.2c1-.6 2.4-.8 4.9-.8 2.5 0 4.5 1.6 5 4.6"/></symbol>
+<symbol id="g-tarot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M14.5 4.2A8 8 0 1 0 19.8 15 6.4 6.4 0 0 1 14.5 4.2z"/><path d="M18 3.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z" fill="currentColor" stroke="none"/></symbol>
+<symbol id="g-iChing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 4h16M4 8h6.5M13.5 8H20M4 12h16M4 16h6.5M13.5 16H20M4 20h16"/></symbol>
+<symbol id="g-runes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3.5v17M8 9l7-4.5M8 14.5l7-4.5"/></symbol>
+<symbol id="g-lenormand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="8" y="3.5" width="11" height="15" rx="2.2"/><path d="M5.6 6.8 5 7a2 2 0 0 0-1.2 2.4l3 10.2a2 2 0 0 0 2.4 1.4l4.6-1.3"/></symbol>
+<symbol id="g-omikuji" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="6.5" y="3" width="11" height="18" rx="2"/><path d="M9.5 7.5h5M9.5 11h5M9.5 14.5h3"/></symbol>
+<symbol id="d-song" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17.5V5.5l10-2v12"/><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="15.5" r="2.5"/></symbol>
+<symbol id="d-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 5.5c2.5-1 5.2-1 8 .8v13c-2.8-1.8-5.5-1.8-8-.8zM20 5.5c-2.5-1-5.2-1-8 .8v13c2.8-1.8 5.5-1.8 8-.8z"/></symbol>
+<symbol id="d-podcast" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="9" y="3.5" width="6" height="10" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5v3"/></symbol>
+<symbol id="d-radio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="2"/><path d="M8.2 8.2a5.4 5.4 0 0 0 0 7.6M15.8 8.2a5.4 5.4 0 0 1 0 7.6M5.3 5.3a9.5 9.5 0 0 0 0 13.4M18.7 5.3a9.5 9.5 0 0 1 0 13.4"/></symbol>
+<symbol id="d-artwork" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3.5a8.5 8.5 0 0 0 0 17c1.3 0 2-1 1.6-2.1-.5-1.3.3-2.4 1.7-2.4h2.2a3 3 0 0 0 3-3 8.5 8.5 0 0 0-8.5-9.5z"/><g fill="currentColor" stroke="none"><circle cx="8" cy="10" r="1.3"/><circle cx="12" cy="7.5" r="1.3"/><circle cx="16" cy="10" r="1.3"/></g></symbol>
+<symbol id="d-space" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M3.5 15.5c2.2 1.6 8.5-.2 13.4-3.8 3.6-2.6 4.6-5 3.6-5.9-.8-.7-2.8-.2-5.2 1"/><path d="M5 5.5l.5 1.4 1.4.5-1.4.5L5 9.3l-.5-1.4-1.4-.5 1.4-.5z" fill="currentColor" stroke="none"/></symbol>
+<symbol id="d-poem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M6.5 7.5h11M6.5 11.5h8M6.5 15.5h10M6.5 19.5h6"/><path d="M5 3.5h14" opacity=".5"/></symbol>
+<symbol id="d-website" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5 13.6 13.6 8.5 15.5 10.4 10.4z"/></symbol>
+<symbol id="d-youtube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="3.5"/><path d="M10.2 9.3v5.4l4.6-2.7z" fill="currentColor"/></symbol>
+</svg>
+<a class="skip" href="#main">本文へスキップ</a>
+<header class="top">
+<div class="wrap top-in">
+<a class="brand" href="/ja/"><img src="/img/icon-64.png" width="28" height="28" alt=""><span>Augura</span></a>
+<nav class="nav" aria-label="メインメニュー"><a href="/ja/app.html">Webアプリ</a><a href="/ja/meanings/index.html">意味</a></nav>
+<details class="lang">
+<summary aria-label="言語: 日本語"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg><span class="l-long">日本語</span><span class="l-short">日本語</span></summary>
+<ul>
+<li><a href="/random-card.html" lang="en" hreflang="en" data-lang="en">English</a></li>
+<li><a href="/de/random-card.html" lang="de" hreflang="de" data-lang="de">Deutsch</a></li>
+<li><a href="/fr/random-card.html" lang="fr" hreflang="fr" data-lang="fr">Français</a></li>
+<li><a href="/it/random-card.html" lang="it" hreflang="it" data-lang="it">Italiano</a></li>
+<li><a href="/es/random-card.html" lang="es" hreflang="es" data-lang="es">Español</a></li>
+<li><a href="/pt-br/random-card.html" lang="pt-BR" hreflang="pt-BR" data-lang="pt-BR">Português (Brasil)</a></li>
+<li><a href="/nl/random-card.html" lang="nl" hreflang="nl" data-lang="nl">Nederlands</a></li>
+<li><a href="/sv/random-card.html" lang="sv" hreflang="sv" data-lang="sv">Svenska</a></li>
+<li><a href="/pl/random-card.html" lang="pl" hreflang="pl" data-lang="pl">Polski</a></li>
+<li><a href="/tr/random-card.html" lang="tr" hreflang="tr" data-lang="tr">Türkçe</a></li>
+<li><a href="/ru/random-card.html" lang="ru" hreflang="ru" data-lang="ru">Русский</a></li>
+<li><a href="/ja/random-card.html" lang="ja" hreflang="ja" data-lang="ja" aria-current="page">日本語</a></li>
+<li><a href="/ko/random-card.html" lang="ko" hreflang="ko" data-lang="ko">한국어</a></li>
+<li><a href="/zh-hans/random-card.html" lang="zh-Hans" hreflang="zh-Hans" data-lang="zh-Hans">简体中文</a></li>
+<li><a href="/zh-hant/random-card.html" lang="zh-Hant" hreflang="zh-Hant" data-lang="zh-Hant">繁體中文</a></li>
+</ul>
+</details>
+
+<a class="pill quiet" href="/ja/#get-the-app">アプリを入手</a>
+</div>
+</header>
+
+<div class="lbanner" id="lbanner" hidden>
+<div class="wrap"><p></p><a class="btn ghost sm" href="/">日本語で読む</a><button type="button" class="round x" aria-label="閉じる"><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button></div>
+</div>
+
+<main id="main" class="lmain" data-src="/data/oracles.ja.d9278a92.json" data-fixed="card">
+<div class="page wide">
+<p class="back"><a href="/ja/tools.html">← 無料ツール一覧</a></p>
+<h1>ランダムなトランプ</h1>
+<p class="lead">シャッフルした52枚のデッキから、1枚ずつ引きます。</p>
+</div>
+<div class="app fixed">
+<div class="stage-col">
+<section class="stage-panel" aria-label="カード">
+
+<section class="gen" id="g-card-panel" data-gen="card" aria-labelledby="g-card-h">
+<div class="gen-head">
+<span class="tile m-card" aria-hidden="true"><svg class="ic"><use href="#g-card"/></svg></span>
+<div><p class="gen-group">決める</p><h2 id="g-card-h" tabindex="-1">カード</h2></div>
+</div>
+<p class="gen-desc">シャッフルしたデッキから、1枚ずつ引きます。</p>
+
+<div class="visual" aria-hidden="true"><div class="pcard back" id="g-card-face"><span class="cor tl"></span><span class="mid"></span><span class="cor br"></span></div></div>
+<div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-card-out"></p><div class="res-detail" id="g-card-detail"></div></div>
+<p class="tally" id="g-card-tally"></p>
+
+<div class="opts">
+<label class="chk"><input type="checkbox" id="g-card-jokers"> ジョーカーを含める</label>
+<button type="button" class="btn ghost sm" id="g-card-shuffle">シャッフル</button>
+</div>
+</section>
+
+<div class="actions needs-gen">
+<button type="button" class="round only-s" id="act-hist" aria-label="履歴"><svg class="ic" aria-hidden="true"><use href="#i-history"/></svg></button>
+<button type="button" class="btn go" id="act-go"><svg class="ic" aria-hidden="true"><use id="act-go-use" href="#g-card"/></svg><span id="act-go-label">引く</span></button>
+<button type="button" class="round" id="act-share" aria-label="共有"><svg class="ic" aria-hidden="true"><use href="#i-share"/></svg></button>
+</div>
+<div class="actions2 needs-gen">
+<button type="button" class="btn ghost sm" id="act-copy"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>結果をコピー</button>
+<a class="btn ghost sm" href="/ja/#get-the-app">アプリ版はこちら</a>
+</div>
+<div class="nudge" id="nudge" hidden>
+<img src="/img/icon-128.png" width="40" height="40" alt="">
+<p id="nudge-text"></p>
+<a class="btn sm" href="/ja/#get-the-app">アプリを見る</a>
+<button type="button" class="round" id="nudge-close" aria-label="今はやめておく"><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button>
+</div>
+<div class="nudge" id="linkbox" hidden>
+<label class="vh" for="linkbox-url">このリンクをコピー</label>
+<input id="linkbox-url" type="text" readonly class="q">
+<button type="button" class="round" id="linkbox-close" aria-label="閉じる"><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button>
+</div>
+<p class="fair">公平な設計：ブラウザの安全な乱数生成機能を、偏りなく使います。何もこのページの外に出ません。</p>
+</section>
+
+</div>
+<div class="side">
+<section class="hist" id="hist" aria-labelledby="hist-h">
+<div class="hist-head"><h2 id="hist-h" tabindex="-1">履歴</h2><button type="button" class="linkbtn" id="hist-clear" hidden>消す</button></div>
+<p class="empty" id="hist-empty">ここに結果が表示されます。</p>
+<ol id="hist-list"></ol>
+
+</section>
+
+<aside class="appcard" aria-labelledby="appcard-h">
+<img src="/img/icon-128.png" width="56" height="56" alt="">
+<h2 class="h" id="appcard-h">iPhone用Augura</h2>
+<p>ここにあるものすべてに加え、20の占いの伝統、パーティーゲーム、ウィジェット、コントロールセンター、Apple Watchにも対応。</p>
+<div class="store"><a class="badge b40" href="https://apps.apple.com/app/id6818135492" rel="noopener"><img src="/img/badges/ja.svg" alt="App Storeからダウンロード" width="109" height="40"></a>
+<span class="soon">近日公開</span></div>
+</aside>
+
+</div>
+</div>
+<div class="page wide">
+<section class="how" aria-labelledby="how-h">
+<h2 id="how-h">しくみ</h2>
+<ul>
+<li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>本物のデッキと同じように、引いたカードは戻さず、シャッフルするまで続きます。</li>
+<li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>公平：すべての結果は、ブラウザの安全な乱数生成機能（crypto.getRandomValues）から、偏りなく得られます。</li>
+<li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>プライベート：入力した内容も引いた結果も、このページの外には出ません。Cookieなし、トラッキングなし。</li>
+</ul>
+<div class="cta-row"><a class="btn" href="/ja/app.html#card">Webアプリで開く<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+</section>
+<section aria-labelledby="more-h">
+<h2 id="more-h">ほかのジェネレーター</h2>
+<ul class="tiles"><li><a href="/ja/coin-flip.html"><span class="tile m-coin" aria-hidden="true"><svg class="ic"><use href="#g-coin"/></svg></span><span>コイン</span></a></li><li><a href="/ja/dice-roller.html"><span class="tile m-dice" aria-hidden="true"><svg class="ic"><use href="#g-dice"/></svg></span><span>サイコロ</span></a></li><li><a href="/ja/yes-or-no.html"><span class="tile m-yesNo" aria-hidden="true"><svg class="ic"><use href="#g-yesNo"/></svg></span><span>はい・いいえ</span></a></li><li><a href="/ja/random-number.html"><span class="tile m-number" aria-hidden="true"><svg class="ic"><use href="#g-number"/></svg></span><span>数字</span></a></li><li><a href="/ja/decision-wheel.html"><span class="tile m-list" aria-hidden="true"><svg class="ic"><use href="#g-list"/></svg></span><span>リスト</span></a></li><li><a href="/ja/random-letter.html"><span class="tile m-letter" aria-hidden="true"><svg class="ic"><use href="#g-letter"/></svg></span><span>文字</span></a></li><li><a href="/ja/rock-paper-scissors.html"><span class="tile m-rps" aria-hidden="true"><svg class="ic"><use href="#g-rps"/></svg></span><span>じゃんけん</span></a></li><li><a href="/ja/random-color.html"><span class="tile m-color" aria-hidden="true"><svg class="ic"><use href="#g-color"/></svg></span><span>カラー</span></a></li><li><a href="/ja/random-date.html"><span class="tile m-date" aria-hidden="true"><svg class="ic"><use href="#g-date"/></svg></span><span>日付</span></a></li><li><a href="/ja/team-generator.html"><span class="tile m-groups" aria-hidden="true"><svg class="ic"><use href="#g-groups"/></svg></span><span>チーム分け</span></a></li><li><a href="/ja/tarot-card.html"><span class="tile m-tarot" aria-hidden="true"><svg class="ic"><use href="#g-tarot"/></svg></span><span>タロットオラクル</span></a></li><li><a href="/ja/i-ching.html"><span class="tile m-iChing" aria-hidden="true"><svg class="ic"><use href="#g-iChing"/></svg></span><span>易経オラクル</span></a></li><li><a href="/ja/rune-cast.html"><span class="tile m-runes" aria-hidden="true"><svg class="ic"><use href="#g-runes"/></svg></span><span>ルーン</span></a></li><li><a href="/ja/lenormand-card.html"><span class="tile m-lenormand" aria-hidden="true"><svg class="ic"><use href="#g-lenormand"/></svg></span><span>ルノルマン</span></a></li><li><a href="/ja/omikuji.html"><span class="tile m-omikuji" aria-hidden="true"><svg class="ic"><use href="#g-omikuji"/></svg></span><span>おみくじ</span></a></li></ul>
+</section>
+</div>
+</main>
+
+<footer class="foot">
+<div class="wrap">
+<div class="foot-cols">
+<div>
+<a class="brand" href="/ja/"><img src="/img/icon-64.png" width="28" height="28" alt=""><span>Augura</span></a>
+<p>偶然のための、静かでプライベートな道具箱。制作：Luca</p>
+</div>
+<div>
+<h2>Augura</h2>
+<ul>
+<li><a href="/ja/app.html">Webアプリ</a></li>
+<li><a href="/ja/tools.html">無料ツール</a></li>
+<li><a href="/ja/meanings/index.html">意味</a></li>
+<li><a href="/ja/press.html">プレスキット</a></li>
+<li><a href="/privacy.html" hreflang="en">プライバシーポリシー（英語）</a></li>
+</ul>
+</div>
+<div>
+<h2>サポート</h2>
+<ul><li><a href="mailto:support@augura.fyi">support@augura.fyi</a></li></ul>
+<details class="lang">
+<summary aria-label="言語: 日本語"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg><span class="l-long">日本語</span><span class="l-short">日本語</span></summary>
+<ul>
+<li><a href="/random-card.html" lang="en" hreflang="en" data-lang="en">English</a></li>
+<li><a href="/de/random-card.html" lang="de" hreflang="de" data-lang="de">Deutsch</a></li>
+<li><a href="/fr/random-card.html" lang="fr" hreflang="fr" data-lang="fr">Français</a></li>
+<li><a href="/it/random-card.html" lang="it" hreflang="it" data-lang="it">Italiano</a></li>
+<li><a href="/es/random-card.html" lang="es" hreflang="es" data-lang="es">Español</a></li>
+<li><a href="/pt-br/random-card.html" lang="pt-BR" hreflang="pt-BR" data-lang="pt-BR">Português (Brasil)</a></li>
+<li><a href="/nl/random-card.html" lang="nl" hreflang="nl" data-lang="nl">Nederlands</a></li>
+<li><a href="/sv/random-card.html" lang="sv" hreflang="sv" data-lang="sv">Svenska</a></li>
+<li><a href="/pl/random-card.html" lang="pl" hreflang="pl" data-lang="pl">Polski</a></li>
+<li><a href="/tr/random-card.html" lang="tr" hreflang="tr" data-lang="tr">Türkçe</a></li>
+<li><a href="/ru/random-card.html" lang="ru" hreflang="ru" data-lang="ru">Русский</a></li>
+<li><a href="/ja/random-card.html" lang="ja" hreflang="ja" data-lang="ja" aria-current="page">日本語</a></li>
+<li><a href="/ko/random-card.html" lang="ko" hreflang="ko" data-lang="ko">한국어</a></li>
+<li><a href="/zh-hans/random-card.html" lang="zh-Hans" hreflang="zh-Hans" data-lang="zh-Hans">简体中文</a></li>
+<li><a href="/zh-hant/random-card.html" lang="zh-Hant" hreflang="zh-Hant" data-lang="zh-Hant">繁體中文</a></li>
+</ul>
+</details>
+
+</div>
+</div>
+<div class="legal"><p>Cookieなし、解析なし、外部サービスへのリクエストなし。</p><p lang="en">Apple, the Apple logo, iPhone, Apple Watch, and Siri are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc.</p></div>
+</div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="application/json" id="i18n">{"lang":"ja","names":{"card":"カード","coin":"コイン","color":"カラー","date":"日付","dice":"サイコロ","groups":"チーム分け","iChing":"易経オラクル","lenormand":"ルノルマン","letter":"文字","list":"リスト","number":"数字","omikuji":"おみくじ","rps":"じゃんけん","runes":"ルーン","tarot":"タロットオラクル","yesNo":"はい・いいえ"},"precache":["/ja/app.html","/ja/manifest.webmanifest","/data/oracles.ja.d9278a92.json","/ja/coin-flip.html","/ja/dice-roller.html","/ja/yes-or-no.html","/ja/random-number.html","/ja/decision-wheel.html","/ja/random-letter.html","/ja/random-card.html","/ja/rock-paper-scissors.html","/ja/random-color.html","/ja/random-date.html","/ja/team-generator.html","/ja/tarot-card.html","/ja/i-ching.html","/ja/rune-cast.html","/ja/lenormand-card.html","/ja/omikuji.html"],"prefix":"ja/","s":{"card_empty":"デッキが空になりました。シャッフルしてもう一度どうぞ。","card_left":"残り枚数：{n}","card_name_format":"{suit}の{rank}","coin_tally":"{heads}：{h} · {tails}：{t}","color_rgb":"RGB {r}, {g}, {b}","copied":"コピーしました","date_invalid":"日付を2つ選んでください。","date_too_long":"100年以内の2つの日付を選んでください。","dice_rolls":"振った回数：{n}","english_only":"（英語）","groups_by_count":"チーム数","groups_by_size":"1チームの人数","groups_need_more":"チーム数以上の名前を追加してください。","groups_need_names":"名前を2つ以上、1行に1つずつ追加してください。","groups_result":"チーム数：{n}","groups_team":"チーム{n}","heads":"表","iching_changing":"変爻 {list} → {m} · {name}","iching_result":"{n} · {name}","join_space":"","keep_off":"オフ：タブを閉じると履歴は消えます。","keep_on":"このブラウザの中だけに保存されます。何も送信されません。","link_copied":"リンクをコピーしました","list_need_two":"選択肢を2つ以上、1行に1つずつ追加してください。","loading":"読み込み中…","need_numbers":"整数を2つ入力してください。","no":"いいえ","nudge":{"coin":"ロック画面、コントロールセンター、Apple Watchからコインを投げられます。","default":"Auguraならウィジェットやコントロールセンターから使えて、Apple Watchアプリもあります。広告なし、アカウント不要。","dice":"ウィジェットやApple Watchからすぐにサイコロを振れます。","tarot":"1日1枚：今日のカードをホーム画面に表示。毎日引くためのリマインダーつき。"},"offline":"初回は接続が必要です。もう一度お試しください。","paper":"パー","range_too_large":"範囲が大きすぎます。最大{max}個までです。","read_meaning":"意味を読む →","reversed":"逆位置","rock":"グー","scissors":"チョキ","share_from":"Auguraから共有","share_plain":"{verb}：{result}。","share_question":"{question}について、{verb} — {result}。","share_used":"{name}を使いました","storage_off":"このブラウザのモードでは使えません。","tails":"裏","title_suffix":"AuguraのWebアプリ","yes":"はい"},"shareVerb":{"card":"カードを引きました","coin":"コインを投げました","color":"ランダムな色を選びました","date":"ランダムな日付を選びました","dice":"サイコロを振りました","groups":"グループをチーム分けしました","iChing":"易経を占いました","lenormand":null,"letter":"ランダムな文字を引きました","list":"リストを回しました","number":"ランダムな数字を引きました","omikuji":null,"rps":"じゃんけんをしました","runes":"ルーンを引きました","tarot":"タロットカードを引きました","yesNo":"「はい」か「いいえ」かをたずねました"},"title":"AuguraのWebアプリ – コイン・サイコロ・タロット | Augura","verbs":{"card":"引く","coin":"投げる","color":"引く","date":"引く","dice":"振る","groups":"分ける","iChing":"投げる","lenormand":"引く","letter":"引く","list":"回す","number":"選ぶ","omikuji":"引く","rps":"勝負","runes":"投げる","tarot":"引く","yesNo":"たずねる"}}</script>
+<script src="/assets/app.37195aea.js" defer></script>
+</body>
+</html>
