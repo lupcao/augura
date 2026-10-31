@@ -30,7 +30,7 @@
 <link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/img/icon-180.png">
 <link rel="stylesheet" href="/assets/site.3f80ce0b.css">
-<link rel="stylesheet" href="/assets/app.da288156.css">
+<link rel="stylesheet" href="/assets/app.2b1d55b4.css">
 <link rel="manifest" href="/fr/manifest.webmanifest">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Augura">
@@ -169,6 +169,7 @@
 <div class="coin3d" hidden><span class="face heads"><svg class="ic"><use href="#e-heads"/></svg></span><span class="face tails"><svg class="ic"><use href="#e-tails"/></svg></span></div>
 </div></div>
 <div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-coin-out"></p><div class="res-detail" id="g-coin-detail"></div></div>
+<div class="reading" id="g-coin-reading"></div>
 <p class="tally" id="g-coin-tally"></p>
 
 <div class="opts">
@@ -185,6 +186,7 @@
 
 <div class="visual" aria-hidden="true"><div id="g-dice-box"></div></div>
 <div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-dice-out"></p><div class="res-detail" id="g-dice-detail"></div></div>
+<div class="reading" id="g-dice-reading"></div>
 <p class="tally" id="g-dice-tally"></p>
 
 <div class="opts">
@@ -205,6 +207,7 @@
 
 <div class="visual" aria-hidden="true"><div class="orb" id="g-yesNo-orb">?</div></div>
 <div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-yesNo-out"></p><div class="res-detail" id="g-yesNo-detail"></div></div>
+<div class="reading" id="g-yesNo-reading"></div>
 <p class="tally" id="g-yesNo-tally"></p>
 
 </section>
@@ -218,6 +221,7 @@
 
 <div class="visual" aria-hidden="true"><div class="orb" id="g-number-orb">#</div></div>
 <div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-number-out"></p><div class="res-detail" id="g-number-detail"></div></div>
+<div class="reading" id="g-number-reading"></div>
 <p class="tally" id="g-number-tally"></p>
 
 <div class="opts">
@@ -235,6 +239,7 @@
 
 <div class="visual" aria-hidden="true"><div class="wheel-wrap"><svg viewBox="0 0 320 320"><g class="wheel-rot" id="g-list-rot"></g><path class="wheel-pin" d="M149 0h22l-11 28z"/></svg></div></div>
 <div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-list-out"></p><div class="res-detail" id="g-list-detail"></div></div>
+<div class="reading" id="g-list-reading"></div>
 <p class="tally" id="g-list-tally"></p>
 
 <div class="opts">
@@ -254,6 +259,7 @@ Tacos</textarea>
 
 <div class="visual" aria-hidden="true"><div class="glyph" id="g-letter-glyph">A</div></div>
 <div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-letter-out"></p><div class="res-detail" id="g-letter-detail"></div></div>
+<div class="reading" id="g-letter-reading"></div>
 <p class="tally" id="g-letter-tally"></p>
 
 <div class="opts">
@@ -270,6 +276,7 @@ Tacos</textarea>
 
 <div class="visual" aria-hidden="true"><div class="pcard back" id="g-card-face"><span class="cor tl"></span><span class="mid"></span><span class="cor br"></span></div></div>
 <div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-card-out"></p><div class="res-detail" id="g-card-detail"></div></div>
+<div class="reading" id="g-card-reading"></div>
 <p class="tally" id="g-card-tally"></p>
 
 <div class="opts">
@@ -287,6 +294,7 @@ Tacos</textarea>
 
 <div class="visual" aria-hidden="true"><div class="orb" id="g-rps-orb"><svg class="ic"><use id="g-rps-use" href="#g-rps"/></svg></div></div>
 <div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-rps-out"></p><div class="res-detail" id="g-rps-detail"></div></div>
+<div class="reading" id="g-rps-reading"></div>
 <p class="tally" id="g-rps-tally"></p>
 
 </section>
@@ -300,6 +308,7 @@ Tacos</textarea>
 
 <div class="visual" aria-hidden="true"><div class="swatch light-label" id="g-color-sw"></div></div>
 <div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-color-out"></p><div class="res-detail" id="g-color-detail"></div></div>
+<div class="reading" id="g-color-reading"></div>
 <p class="tally" id="g-color-tally"></p>
 
 </section>
@@ -313,6 +322,7 @@ Tacos</textarea>
 
 <div class="visual" aria-hidden="true"><div class="leaf" id="g-date-leaf"><div class="m">&nbsp;</div><div class="d">?</div><div class="y">&nbsp;</div></div></div>
 <div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-date-out"></p><div class="res-detail" id="g-date-detail"></div></div>
+<div class="reading" id="g-date-reading"></div>
 <p class="tally" id="g-date-tally"></p>
 
 <div class="opts">
@@ -330,6 +340,7 @@ Tacos</textarea>
 
 <div class="visual" aria-hidden="true"><div id="g-groups-box" class="teams-box"><div class="orb"><svg class="ic"><use href="#g-groups"/></svg></div></div></div>
 <div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-groups-out"></p><div class="res-detail" id="g-groups-detail"></div></div>
+<div class="reading" id="g-groups-reading"></div>
 <p class="tally" id="g-groups-tally"></p>
 
 <div class="opts">
@@ -357,6 +368,7 @@ Joueur 6</textarea>
 
 <div class="visual" aria-hidden="true"><div class="spread n1" id="g-tarot-spread"><div class="ocard"><span class="n">&#10022;</span><span class="orn"><svg class="ic"><use href="#g-tarot"/></svg></span><span class="nm">Oracle du tarot</span></div></div></div>
 <div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-tarot-out"></p><div class="res-detail" id="g-tarot-detail"></div></div>
+<div class="reading" id="g-tarot-reading"></div>
 <p class="tally" id="g-tarot-tally"></p>
 
 <div class="opts">
@@ -377,6 +389,7 @@ Joueur 6</textarea>
 
 <div class="visual" aria-hidden="true"><div class="hexa empty" id="g-iChing-hexa"><i class="yang"></i><i></i><i class="yang"></i><i></i><i class="yang"></i><i></i></div></div>
 <div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-iChing-out"></p><div class="res-detail" id="g-iChing-detail"></div></div>
+<div class="reading" id="g-iChing-reading"></div>
 <p class="tally" id="g-iChing-tally"></p>
 
 <div class="opts">
@@ -396,6 +409,7 @@ Joueur 6</textarea>
 
 <div class="visual" aria-hidden="true"><div class="stones n1" id="g-runes-stones"><div class="stone blank"></div></div></div>
 <div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-runes-out"></p><div class="res-detail" id="g-runes-detail"></div></div>
+<div class="reading" id="g-runes-reading"></div>
 <p class="tally" id="g-runes-tally"></p>
 
 <div class="opts">
@@ -416,6 +430,7 @@ Joueur 6</textarea>
 
 <div class="visual" aria-hidden="true"><div class="spread n1" id="g-lenormand-spread"><div class="ocard len"><span class="n">36</span><span class="orn">&#9827;</span><span class="nm">Lenormand</span></div></div></div>
 <div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-lenormand-out"></p><div class="res-detail" id="g-lenormand-detail"></div></div>
+<div class="reading" id="g-lenormand-reading"></div>
 <p class="tally" id="g-lenormand-tally"></p>
 
 <div class="opts">
@@ -435,6 +450,7 @@ Joueur 6</textarea>
 
 <div class="visual" aria-hidden="true"><div class="slip folded" id="g-omikuji-slip">&#31844;</div></div>
 <div class="result" role="status" aria-live="polite" aria-atomic="true"><p class="res-main" id="g-omikuji-out"></p><div class="res-detail" id="g-omikuji-detail"></div></div>
+<div class="reading" id="g-omikuji-reading"></div>
 <p class="tally" id="g-omikuji-tally"></p>
 
 </section>
@@ -537,7 +553,7 @@ Joueur 6</textarea>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script type="application/json" id="i18n">{"lang":"fr","names":{"card":"Carte","coin":"Pièce","color":"Couleur","date":"Date","dice":"Dés","groups":"Équipes","iChing":"Oracle du Yi Jing","lenormand":"Lenormand","letter":"Lettre","list":"Liste","number":"Nombre","omikuji":"Omikuji","rps":"Pierre-feuille-ciseaux","runes":"Runes","tarot":"Oracle du tarot","yesNo":"Oui ou non"},"precache":["/fr/app.html","/fr/manifest.webmanifest","/data/oracles.fr.01274b7b.json","/fr/coin-flip.html","/fr/dice-roller.html","/fr/yes-or-no.html","/fr/random-number.html","/fr/decision-wheel.html","/fr/random-letter.html","/fr/random-card.html","/fr/rock-paper-scissors.html","/fr/random-color.html","/fr/random-date.html","/fr/team-generator.html","/fr/tarot-card.html","/fr/i-ching.html","/fr/rune-cast.html","/fr/lenormand-card.html","/fr/omikuji.html"],"prefix":"fr/","s":{"card_empty":"Le jeu est vide. Mélangez pour recommencer.","card_left":"Cartes restantes : {n}","card_name_format":"{rank} de {suit}","coin_tally":"{heads} {h} · {tails} {t}","color_rgb":"RVB {r}, {g}, {b}","copied":"Copié","date_invalid":"Choisissez deux dates.","date_too_long":"Choisissez deux dates séparées d’au plus 100 ans.","dice_rolls":"Lancers : {n}","english_only":"(en anglais)","groups_by_count":"Nombre d’équipes","groups_by_size":"Personnes par équipe","groups_need_more":"Ajoutez au moins autant de noms que d’équipes.","groups_need_names":"Ajoutez au moins deux noms, un par ligne.","groups_result":"Équipes : {n}","groups_team":"Équipe {n}","heads":"Face","iching_changing":"Lignes mobiles {list} → {m} · {name}","iching_result":"{n} · {name}","join_space":" ","keep_off":"Désactivé : l’historique disparaît à la fermeture de l’onglet.","keep_on":"Conservé uniquement dans ce navigateur. Rien n’est envoyé nulle part.","link_copied":"Lien copié","list_need_two":"Ajoutez au moins deux options, une par ligne.","loading":"Chargement…","need_numbers":"Saisissez deux nombres entiers.","no":"Non","nudge":{"coin":"Lancez une pièce depuis votre écran de verrouillage, le Centre de contrôle ou l’Apple Watch.","default":"Augura met cela dans un widget et dans le Centre de contrôle, avec aussi une app Apple Watch. Sans pub, sans compte.","dice":"Jetez les dés depuis un widget ou directement sur votre Apple Watch.","tarot":"Une carte par jour : la carte du jour sur votre écran d’accueil, avec un rappel de tirage quotidien."},"offline":"Une connexion est nécessaire la première fois. Veuillez réessayer.","paper":"Feuille","range_too_large":"Cette plage est trop grande : {max} nombres au maximum.","read_meaning":"Lire la signification →","reversed":"Inversée","rock":"Pierre","scissors":"Ciseaux","share_from":"Partagé depuis Augura","share_plain":"{verb} : {result}.","share_question":"{verb} pour « {question} » — {result}.","share_used":"J’ai utilisé {name}","storage_off":"Indisponible dans ce mode de navigation.","tails":"Pile","title_suffix":"App web Augura","yes":"Oui"},"shareVerb":{"card":"J’ai tiré une carte","coin":"J’ai lancé une pièce","color":"J’ai choisi une couleur au hasard","date":"J’ai choisi une date au hasard","dice":"J’ai lancé les dés","groups":"J’ai réparti le groupe en équipes","iChing":"J’ai consulté le Yi Jing","lenormand":null,"letter":"J’ai tiré une lettre au hasard","list":"J’ai fait tourner une liste","number":"J’ai tiré un nombre au hasard","omikuji":null,"rps":"J’ai joué à pierre-feuille-ciseaux","runes":"J’ai tiré une rune","tarot":"J’ai tiré une carte de tarot","yesNo":"J’ai demandé Oui ou Non"},"title":"App web Augura – Pile ou face, dés, tarot | Augura","verbs":{"card":"Tirer","coin":"Lancer","color":"Tirer","date":"Tirer","dice":"Lancer","groups":"Répartir","iChing":"Lancer","lenormand":"Tirer","letter":"Tirer","list":"Tourner","number":"Choisir","omikuji":"Tirer","rps":"Jouer","runes":"Lancer","tarot":"Tirer","yesNo":"Demander"}}</script>
-<script src="/assets/app.37195aea.js" defer></script>
+<script type="application/json" id="i18n">{"lang":"fr","names":{"card":"Carte","coin":"Pièce","color":"Couleur","date":"Date","dice":"Dés","groups":"Équipes","iChing":"Oracle du Yi Jing","lenormand":"Lenormand","letter":"Lettre","list":"Liste","number":"Nombre","omikuji":"Omikuji","rps":"Pierre-feuille-ciseaux","runes":"Runes","tarot":"Oracle du tarot","yesNo":"Oui ou non"},"precache":["/fr/app.html","/fr/manifest.webmanifest","/data/oracles.fr.01274b7b.json","/data/reading-iching.fr.d07621df.json","/data/reading-lenormand.fr.24c9e63b.json","/data/reading-runes.fr.22b6923f.json","/data/reading-tarot.fr.7cc5d31b.json","/fr/coin-flip.html","/fr/dice-roller.html","/fr/yes-or-no.html","/fr/random-number.html","/fr/decision-wheel.html","/fr/random-letter.html","/fr/random-card.html","/fr/rock-paper-scissors.html","/fr/random-color.html","/fr/random-date.html","/fr/team-generator.html","/fr/tarot-card.html","/fr/i-ching.html","/fr/rune-cast.html","/fr/lenormand-card.html","/fr/omikuji.html"],"prefix":"fr/","readings":{"iching":"/data/reading-iching.fr.d07621df.json","lenormand":"/data/reading-lenormand.fr.24c9e63b.json","runes":"/data/reading-runes.fr.22b6923f.json","tarot":"/data/reading-tarot.fr.7cc5d31b.json"},"s":{"card_empty":"Le jeu est vide. Mélangez pour recommencer.","card_left":"Cartes restantes : {n}","card_name_format":"{rank} de {suit}","coin_tally":"{heads} {h} · {tails} {t}","color_rgb":"RVB {r}, {g}, {b}","copied":"Copié","date_invalid":"Choisissez deux dates.","date_too_long":"Choisissez deux dates séparées d’au plus 100 ans.","dice_rolls":"Lancers : {n}","english_only":"(en anglais)","groups_by_count":"Nombre d’équipes","groups_by_size":"Personnes par équipe","groups_need_more":"Ajoutez au moins autant de noms que d’équipes.","groups_need_names":"Ajoutez au moins deux noms, un par ligne.","groups_result":"Équipes : {n}","groups_team":"Équipe {n}","h_card":"La carte","h_reversed":"Signification inversée","h_upright":"Signification droite","heads":"Face","ich_bottom":"(en bas)","ich_image":"L’image","ich_judgment":"Le jugement","ich_line":"Ligne {n}","ich_top":"(en haut)","iching_changing":"Lignes mobiles {list} → {m} · {name}","iching_result":"{n} · {name}","join_space":" ","keep_off":"Désactivé : l’historique disparaît à la fermeture de l’onglet.","keep_on":"Conservé uniquement dans ce navigateur. Rien n’est envoyé nulle part.","len_combination":"En combinaison","len_meaning":"Signification","link_copied":"Lien copié","list_need_two":"Ajoutez au moins deux options, une par ligne.","loading":"Chargement…","need_numbers":"Saisissez deux nombres entiers.","no":"Non","nudge":{"coin":"Lancez une pièce depuis votre écran de verrouillage, le Centre de contrôle ou l’Apple Watch.","default":"Augura met cela dans un widget et dans le Centre de contrôle, avec aussi une app Apple Watch. Sans pub, sans compte.","dice":"Jetez les dés depuis un widget ou directement sur votre Apple Watch.","tarot":"Une carte par jour : la carte du jour sur votre écran d’accueil, avec un rappel de tirage quotidien."},"offline":"Une connexion est nécessaire la première fois. Veuillez réessayer.","paper":"Feuille","range_too_large":"Cette plage est trop grande : {max} nombres au maximum.","read_meaning":"Lire la signification →","reflection":"Proposé pour réfléchir et s’amuser, pas comme une prédiction","reversed":"Inversée","rock":"Pierre","rune_lore":"Tradition","rune_reversed":"Renversée (merkstave)","scissors":"Ciseaux","share_from":"Partagé depuis Augura","share_plain":"{verb} : {result}.","share_question":"{verb} pour « {question} » — {result}.","share_used":"J’ai utilisé {name}","storage_off":"Indisponible dans ce mode de navigation.","tails":"Pile","title_suffix":"App web Augura","yes":"Oui"},"shareVerb":{"card":"J’ai tiré une carte","coin":"J’ai lancé une pièce","color":"J’ai choisi une couleur au hasard","date":"J’ai choisi une date au hasard","dice":"J’ai lancé les dés","groups":"J’ai réparti le groupe en équipes","iChing":"J’ai consulté le Yi Jing","lenormand":null,"letter":"J’ai tiré une lettre au hasard","list":"J’ai fait tourner une liste","number":"J’ai tiré un nombre au hasard","omikuji":null,"rps":"J’ai joué à pierre-feuille-ciseaux","runes":"J’ai tiré une rune","tarot":"J’ai tiré une carte de tarot","yesNo":"J’ai demandé Oui ou Non"},"title":"App web Augura – Pile ou face, dés, tarot | Augura","verbs":{"card":"Tirer","coin":"Lancer","color":"Tirer","date":"Tirer","dice":"Lancer","groups":"Répartir","iChing":"Lancer","lenormand":"Tirer","letter":"Tirer","list":"Tourner","number":"Choisir","omikuji":"Tirer","rps":"Jouer","runes":"Lancer","tarot":"Tirer","yesNo":"Demander"}}</script>
+<script src="/assets/app.dda449ca.js" defer></script>
 </body>
 </html>

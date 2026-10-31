@@ -43,6 +43,10 @@ function ichingLines(values) {
   }
   return { lines: lines, moved: moved, changing: changing };
 }
+// The texts of the lines that changed: changing counts 1 to 6 from the bottom, line_texts is bottom first.
+function changedLines(lineTexts, changing) {
+  return changing.map(function (n) { return [n, lineTexts[n - 1]]; }).filter(function (x) { return !!x[1]; });
+}
 function hexByLines(hexes, lines) { for (var i = 0; i < hexes.length; i++) if (hexes[i][2] === lines) return hexes[i]; return null; }
 // Deal shuffled names round-robin into k teams: sizes differ by at most one.
 function deal(names, k) {
@@ -119,6 +123,43 @@ function dataArrived(d) {
   w.forEach(function (f) { f(); });
 }
 
+// ---------- long reading texts, one file per oracle: fetched when the oracle opens, a draw waits for them once.
+// Without them (offline, nothing cached, or not here within READ_WAIT) the draw still works: short line plus the
+// meaning link. A slow file keeps loading for the next draw; a failed one is tried again by the next draw.
+var READ = {}, readWaiting = {}, readLate = {}, READ_WAIT = 3000;
+function needReading(key, cb) {
+  if (READ[key]) { if (cb) cb(); return; }
+  if (readWaiting[key]) { if (cb) readWaiting[key].push(cb); return; }
+  readWaiting[key] = cb ? [cb] : [];
+  fetch(I18N.readings[key], { credentials: "same-origin" }).then(function (r) {
+    if (!r.ok) throw new Error(String(r.status)); return r.json();
+  }).then(function (d) {
+    if (!d || d.v !== 1 || !Array.isArray(d.items)) throw new Error("data");
+    READ[key] = d.items; readLate[key] = false;
+  }).catch(function () { readLate[key] = true; }).then(function () {
+    var list = readWaiting[key]; delete readWaiting[key];
+    setTimeout(function () { list.forEach(function (f) { f(); }); }, 0);
+  });
+}
+function readItem(key, list, row) { var it = READ[key]; return it ? it[list.indexOf(row)] || null : null; }
+// blocks = [{ title, lead, kw, parts: [[label or "", text]], file, has }]; the live region above holds only the short result.
+function showReading(box, blocks) {
+  clear(box);
+  if (!blocks || !blocks.length) return;
+  box.appendChild(el("p", "read-note", S.reflection));
+  var ul = el("ul", "res-list");
+  blocks.forEach(function (b) {
+    var li = el("li");
+    if (b.title) li.appendChild(el("h3", "read-title", b.title));
+    if (b.lead) li.appendChild(el("p", "read-kw", b.lead));
+    if (b.kw) li.appendChild(el("p", "read-kw", b.kw));
+    b.parts.forEach(function (p) { if (p[0]) li.appendChild(el("b", null, p[0])); li.appendChild(para(p[1])); });
+    if (b.file) { var a = meaningLink(b.file, b.has); a.className = "read-more"; li.appendChild(a); }
+    ul.appendChild(li);
+  });
+  box.appendChild(ul);
+}
+
 // ---------- meaning links (§8.5): this language's page if it exists, otherwise the English one
 function meaningLink(file, hasPage) {
   var a = el("a");
@@ -138,26 +179,41 @@ function showResult(id, res) {
   clear(det); det.classList.remove("res-err");
   if (res.build) res.build(det);
   else if (res.detail) det.textContent = res.detail;
-  bringIntoView(out);
+  showReading(g$(id, "reading"), res.blocks);
+  showDrawn(id);
 }
-// Phones: the fixed button bar (and the sticky header above) must never hide the answer just drawn.
-function bringIntoView(node) {
-  var bar = document.querySelector(".actions");
-  if (!node || !bar || getComputedStyle(bar).position !== "fixed") return;
-  var r = node.getBoundingClientRect(), top = 0, bottom = Math.min(window.innerHeight, bar.getBoundingClientRect().top);
+// At every width the answer just drawn must be on screen, clear of the sticky header and of the button bar (fixed on
+// phones, sticky under a long reading on wider screens). Scrolls so that bottomY ends above the bar and the top of the
+// first node in tops that fits with it stays below the header; the last node never goes under the header.
+function bringIntoView(tops, bottomY) {
+  var bar = document.querySelector(".actions"), top = 0, bottom = window.innerHeight, gap = 12;
   Array.prototype.forEach.call(document.querySelectorAll(".top, .chiprail"), function (s) {
     if (getComputedStyle(s).position === "sticky") top = Math.max(top, s.getBoundingClientRect().bottom);
   });
-  if (r.bottom + 24 > bottom || r.top < top) {             // + the first line of the detail under it
-    node.scrollIntoView({ block: "center", behavior: reduceMotion ? "auto" : "smooth" });
-  }
+  if (bar && getComputedStyle(bar).position !== "static") bottom -= bar.offsetHeight;
+  var a = 0;
+  tops.some(function (n) { a = n.getBoundingClientRect().top; return bottomY - a <= bottom - top - 2 * gap; });
+  var d = Math.max(0, bottomY + gap - bottom);
+  if (a - d < top + gap) d = a - top - gap;
+  if (Math.abs(d) > 1) window.scrollTo({ top: window.scrollY + d, behavior: reduceMotion ? "auto" : "smooth" });
+}
+function visualOf(id) { var v = document.querySelector("#g-" + id + "-panel .visual"); return v && v.offsetHeight ? [v] : []; }
+// While it is drawn: the cards and the place of the answer (a redraw from further down the reading comes back up).
+function showDrawing(id) {
+  var out = g$(id, "out");
+  bringIntoView(visualOf(id).concat(out), out.getBoundingClientRect().bottom);
+}
+// Once drawn: the name, the short line and the start of the reading, with the cards too if they all fit.
+function showDrawn(id) {
+  var det = g$(id, "detail").getBoundingClientRect(), r = g$(id, "reading").getBoundingClientRect();
+  bringIntoView(visualOf(id).concat(g$(id, "out")), Math.max(det.bottom, r.height ? r.top + Math.min(r.height, 110) : 0));
 }
 function showError(id, msg) {
   if (!id) return;
   var out = g$(id, "out"), det = g$(id, "detail");
-  out.textContent = ""; clear(det); det.textContent = msg; det.classList.add("res-err");
+  out.textContent = ""; clear(det); clear(g$(id, "reading")); det.textContent = msg; det.classList.add("res-err");
 }
-function clearResult(id) { var out = g$(id, "out"), det = g$(id, "detail"); out.textContent = ""; clear(det); det.classList.remove("res-err"); }
+function clearResult(id) { var out = g$(id, "out"), det = g$(id, "detail"); out.textContent = ""; clear(det); clear(g$(id, "reading")); det.classList.remove("res-err"); }
 
 // ---------- primary button
 var GO = document.getElementById("act-go");
@@ -170,14 +226,35 @@ function updateGo() {
 }
 function setBusy(b) { state.busy = b; if (b) GO.setAttribute("aria-disabled", "true"); else GO.removeAttribute("aria-disabled"); }
 
+// One draw at most waits for a file, and only the tool it was pressed in draws when the wait ends.
+var drawWait = null;
+function endDrawWait() { if (drawWait) { clearTimeout(drawWait.timer); drawWait = null; updateGo(); } }
+function waitForReading(id, key) {
+  var w = drawWait = { id: id };
+  var go = function (late) {
+    if (drawWait !== w) return;
+    if (late) readLate[key] = true;
+    endDrawWait();
+    if (state.current === id) run();
+  };
+  w.timer = setTimeout(function () { go(true); }, READ_WAIT);
+  setGoLabel(S.loading);
+  needReading(key, function () { go(false); });
+}
 function run() {
   var id = state.current, g = GEN[id];
   if (!id || !g || state.busy) return;
-  if (g.needsData && !DATA) { needData(run); return; }
+  if (g.needsData && !DATA) { needData(function () { if (state.current === id) run(); }); return; }
+  if (g.reading && !READ[g.reading]) {
+    if (drawWait && drawWait.id === id) return;         // already waiting: a second press adds nothing
+    if (!readLate[g.reading]) { waitForReading(id, g.reading); return; }
+    needReading(g.reading);                             // late or failed before: draw now, the next draw can have the text
+  }
   var res = g.draw();                                   // the result is drawn first ...
   if (!res) return;
   if (res.error) { showError(id, res.error); return; }
   setBusy(true); clearResult(id);
+  showDrawing(id);                                      // a redraw from further down the reading: back to the cards
   var finish = function () {                            // ... and the animation only reveals it
     showResult(id, res); record(id, res); setBusy(false);
   };
@@ -676,7 +753,8 @@ GEN.groups = (function () {
       if (mode() === "count" && teamsN > list.length) return { error: S.groups_need_more };
       var teams = deal(shuffle(list.slice()), teamsN);
       var head = cut(teams.map(function (t, i) { return fmt(S.groups_team, { n: i + 1 }) + ": " + t.join(", "); }).join(" · "), 500);
-      return { teams: teams, main: fmt(S.groups_result, { n: teamsN }), headline: head, detail: head, copy: head, hist: cut(head, 300) };
+      return { teams: teams, main: fmt(S.groups_result, { n: teamsN }), headline: head, copy: head, hist: cut(head, 300),
+        build: function (det) { det.appendChild(el("span", "vh", head)); } };   // the visible teams are aria-hidden; screen readers get them here
     },
     reveal: function (res, done, instant) {
       clear(box);
@@ -707,16 +785,6 @@ function drawDistinct(n, k) {   // k different positions out of n, in draw order
   return out;
 }
 function para(text) { return el("p", null, text); }
-function cardItems(det, items) {   // several cards: one row per card with its text and meaning link
-  var ul = el("ul", "res-list");
-  items.forEach(function (it) {
-    var li = el("li"); li.appendChild(el("b", null, it.title));
-    if (it.text) li.appendChild(document.createTextNode(it.text + " "));
-    if (it.link) li.appendChild(it.link);
-    ul.appendChild(li);
-  });
-  det.appendChild(ul);
-}
 function oracleCard(num, ornament, name, rev, cls) {   // the card (turned when reversed) with a label under it
   var w = el("div", "ow"), c = el("div", "ocard" + (cls ? " " + cls : "") + (rev ? " rev" : ""));
   c.appendChild(el("span", "n", num));
@@ -734,26 +802,31 @@ function revealCards(box, nodes, done, instant) {
   if (instant) done(); else later(done, 420);
 }
 
-// ---------- tarot: [name, numeral, upright, reversed, file, hasPage, major]
+// ---------- tarot: [name, numeral, upright, reversed, file, hasPage, major]; long texts: READ.tarot
 GEN.tarot = (function () {
   var seg, rev, box;
   return {
     needsData: true,
+    reading: "tarot",
     init: function () { seg = g$("tarot", "n"); rev = g$("tarot", "rev"); box = g$("tarot", "spread"); segWire(seg, function () {}); rev.addEventListener("change", savePrefs); },
     draw: function () {
       var k = +segValue(seg) || 1, cards = drawDistinct(DATA.tarot.length, k).map(function (i) {
         var c = DATA.tarot[i], r = rev.checked && randInt(2) === 1;
-        return { c: c, rev: r, label: c[0] + (r ? " (" + S.reversed + ")" : "") };
+        return { c: c, rev: r, label: c[0] + (r ? " (" + S.reversed + ")" : ""), text: r ? c[3] : c[2] };
       });
       var main = k === 1 ? cards[0].c[0] + (cards[0].rev ? " · " + S.reversed : "") : cards.map(function (x) { return x.label; }).join(" · ");
       var res = { cards: cards, main: main, headline: main, k: k };
+      res.blocks = cards.map(function (x) {             // one card: its short line is already in the result above
+        var more = readItem("tarot", DATA.tarot, x.c), parts = [];
+        if (k > 1) parts.push([x.rev ? S.h_reversed : S.h_upright, x.text]);
+        if (more) parts.push([S.h_card, more[0]]);
+        return { title: k > 1 ? x.label : "", kw: more && more[1], parts: parts, file: x.c[4], has: x.c[5] };
+      });
       if (k === 1) {
-        var one = cards[0], text = one.rev ? one.c[3] : one.c[2];
-        res.hist = text; res.copy = text;
-        res.build = function (det) { var p = para(text + " "); p.appendChild(meaningLink(one.c[4], one.c[5])); det.appendChild(p); };
+        res.hist = cards[0].text; res.copy = cards[0].text;
+        res.build = function (det) { det.appendChild(para(cards[0].text)); };
       } else {
-        res.hist = ""; res.copy = cards.map(function (x) { return x.label + ": " + (x.rev ? x.c[3] : x.c[2]); }).join(" | ");
-        res.build = function (det) { cardItems(det, cards.map(function (x) { return { title: x.label, text: x.rev ? x.c[3] : x.c[2], link: meaningLink(x.c[4], x.c[5]) }; })); };
+        res.hist = ""; res.copy = cards.map(function (x) { return x.label + ": " + x.text; }).join(" | ");
       }
       return res;
     },
@@ -769,8 +842,21 @@ GEN.tarot = (function () {
 // ---------- I Ching: hex = [number, name, lines (bottom first), summary, file, hasPage]
 GEN.iChing = (function () {
   var seg, bars;
+  function hexBlock(h, title, withSummary, changing) {  // the second hexagram: name, summary, judgment, image; no lines
+    var more = readItem("iching", DATA.iching.hex, h), parts = [];
+    if (withSummary) parts.push(["", h[3]]);
+    if (more) {
+      parts.push([S.ich_judgment, more[1]], [S.ich_image, more[2]]);
+      changedLines(more[3], changing).forEach(function (x) {
+        var end = x[0] === 1 ? S.join_space + S.ich_bottom : x[0] === 6 ? S.join_space + S.ich_top : "";
+        parts.push([fmt(S.ich_line, { n: x[0] }) + end, x[1]]);
+      });
+    }
+    return { title: title, kw: more && more[0], parts: parts, file: h[4], has: h[5] };
+  }
   return {
     needsData: true,
+    reading: "iching",
     init: function () { seg = g$("iChing", "m"); bars = g$("iChing", "hexa"); segWire(seg, function () {}); },
     draw: function () {
       var method = segValue(seg) === "yarrow" ? "yarrow" : "coins", counts = DATA.iching.odds[method], values = [];
@@ -779,11 +865,10 @@ GEN.iChing = (function () {
       var m = L.changing.length ? hexByLines(DATA.iching.hex, L.moved) : null;
       var main = fmt(S.iching_result, { n: h[0], name: h[1] });
       var change = m ? fmt(S.iching_changing, { list: L.changing.join(", "), m: m[0], name: m[1] }) : "";
-      return { values: values, main: main, headline: main, hist: h[3], copy: h[3] + (change ? " " + change : ""),
-        build: function (det) {
-          var p = para(h[3] + " "); p.appendChild(meaningLink(h[4], h[5])); det.appendChild(p);
-          if (m) { var p2 = para(change + " "); p2.appendChild(meaningLink(m[4], m[5])); det.appendChild(p2); }
-        } };
+      var blocks = [hexBlock(h, m ? main : "", false, L.changing)];
+      if (m) blocks.push(hexBlock(m, fmt(S.iching_result, { n: m[0], name: m[1] }), true, []));
+      return { values: values, main: main, headline: main, hist: h[3], copy: h[3] + (change ? " " + change : ""), blocks: blocks,
+        build: function (det) { det.appendChild(para(h[3])); if (m) det.appendChild(para(change)); } };
     },
     reveal: function (res, done, instant) {
       clear(bars); bars.className = "hexa";
@@ -809,6 +894,7 @@ GEN.runes = (function () {
   }
   return {
     needsData: true,
+    reading: "runes",
     init: function () { seg = g$("runes", "n"); rev = g$("runes", "rev"); box = g$("runes", "stones"); segWire(seg, function () {}); rev.addEventListener("change", savePrefs); },
     draw: function () {
       var k = +segValue(seg) || 1, picks = drawDistinct(DATA.runes.length, k).map(function (i) {
@@ -817,12 +903,17 @@ GEN.runes = (function () {
       });
       var main = k === 1 ? picks[0].r[0] + (picks[0].rev ? " · " + S.reversed : "") : picks.map(function (x) { return x.label; }).join(" · ");
       var res = { picks: picks, k: k, main: main, headline: main };
+      res.blocks = picks.map(function (x) {
+        var more = readItem("runes", DATA.runes, x.r), parts = [[x.rev ? S.rune_reversed : S.h_upright, x.text]];
+        if (more) parts.push([S.rune_lore, more[2]]);
+        return { title: k > 1 ? x.label : "", lead: k > 1 && more ? more[0] : "", kw: more && more[1], parts: parts, file: x.r[6], has: x.r[7] };
+      });
       if (k === 1) {
+        var lead = readItem("runes", DATA.runes, picks[0].r);
         res.hist = picks[0].text; res.copy = picks[0].text;
-        res.build = function (det) { var p = para(picks[0].text + " "); p.appendChild(meaningLink(picks[0].r[6], picks[0].r[7])); det.appendChild(p); };
+        if (lead) res.detail = lead[0];                 // glyph, sound, aett, what the name means
       } else {
         res.hist = ""; res.copy = picks.map(function (x) { return x.label + ": " + x.text; }).join(" | ");
-        res.build = function (det) { cardItems(det, picks.map(function (x) { return { title: x.label, text: x.text, link: meaningLink(x.r[6], x.r[7]) }; })); };
       }
       return res;
     },
@@ -840,18 +931,23 @@ GEN.lenormand = (function () {
   var seg, box;
   return {
     needsData: true,
+    reading: "lenormand",
     init: function () { seg = g$("lenormand", "n"); box = g$("lenormand", "spread"); segWire(seg, function () {}); },
     draw: function () {
       var k = +segValue(seg) || 1, cards = drawDistinct(DATA.lenormand.length, k).map(function (i) { return DATA.lenormand[i]; });
       var main = cards.map(function (c) { return c[1]; }).join(" · ");
       var res = { cards: cards, k: k, main: main, headline: main };
+      res.blocks = cards.map(function (x) {
+        var more = readItem("lenormand", DATA.lenormand, x), parts = [[S.len_meaning, x[4]]];
+        if (more) parts.push([S.len_combination, more[0]]);
+        return { title: k > 1 ? x[1] : "", kw: k > 1 ? x[3] : "", parts: parts, file: x[5], has: x[6] };
+      });
       if (k === 1) {
         var c = cards[0];
         res.hist = c[3]; res.copy = c[3] + ". " + c[4];
-        res.build = function (det) { det.appendChild(el("p", "muted", c[3])); var p = para(c[4] + " "); p.appendChild(meaningLink(c[5], c[6])); det.appendChild(p); };
+        res.detail = c[3];
       } else {
-        res.hist = ""; res.copy = cards.map(function (x) { return x[1] + ": " + x[3]; }).join(" | ");
-        res.build = function (det) { cardItems(det, cards.map(function (x) { return { title: x[1], text: x[3] + ". " + x[4], link: meaningLink(x[5], x[6]) }; })); };
+        res.hist = ""; res.copy = cards.map(function (x) { return x[1] + ": " + x[3] + ". " + x[4]; }).join(" | ");
       }
       return res;
     },
@@ -873,13 +969,9 @@ GEN.omikuji = (function () {
     draw: function () {
       var lv = weighted(DATA.omikuji.levels, function (l) { return l[3]; });
       var lines = DATA.omikuji.sections.map(function (s) { return [s[0], pick(s[1][lv[0]] || [""])]; });
-      return { lv: lv, main: lv[2], headline: lv[2], hist: lv[4], copy: lv[4],
-        build: function (det) {
-          det.appendChild(para(lv[4]));
-          var ul = el("ul", "res-list");
-          lines.forEach(function (x) { var li = el("li"); li.appendChild(el("b", null, x[0])); li.appendChild(document.createTextNode(x[1])); ul.appendChild(li); });
-          det.appendChild(ul);
-        } };
+      return { lv: lv, main: lv[2], headline: lv[2], hist: lv[4], detail: lv[4],
+        copy: lv[4] + lines.map(function (x) { return " | " + x[0] + ": " + x[1]; }).join(""),
+        blocks: lines.map(function (x) { return { parts: [[x[0], x[1]]] }; }) };
     },
     reveal: function (res, done, instant) {
       slip.textContent = res.lv[1]; slip.className = "slip";
@@ -898,6 +990,7 @@ function ensureInit(id) { if (!inited[id] && GEN[id]) { inited[id] = true; GEN[i
 
 function select(id, byUser) {
   if (id && !PANELS[id]) return;
+  if (id !== state.current) endDrawWait();              // a draw waiting for its file belongs to the tool it was pressed in
   state.current = id;
   for (var k in PANELS) PANELS[k].hidden = k !== id;
   var pickBox = document.getElementById("pick");
@@ -915,6 +1008,7 @@ function select(id, byUser) {
     if (chip && chip.scrollIntoView) chip.scrollIntoView({ inline: "center", block: "nearest" });
     if (byUser) { var h = document.getElementById("g-" + id + "-h"); if (h) h.focus({ preventScroll: false }); }
     if (GEN[id].needsData && !DATA) needData(function () {});
+    if (GEN[id].reading) needReading(GEN[id].reading);
   } else if (!FIXED) {
     document.title = I18N.title;
     if (byUser) { var ph = document.getElementById("pick-h"); if (ph) ph.focus(); }
