@@ -1,7 +1,7 @@
 // Augura offline support for the web app and the generator pages. Same-origin only; /verify/, /press/ and range
 // requests are never touched. Only the files listed in CORE and the page's precache list are stored (no runtime
 // caching), so the cache holds the web app's own files and nothing else the visitor opens.
-var VERSION = "augura-9d98ddaa2450";
+var VERSION = "augura-4a599f69318e";
 var CORE = ["/assets/app.37195aea.js","/assets/app.da288156.css","/assets/site.18f15d92.js","/assets/site.3f80ce0b.css","/tools.js","/favicon.ico","/img/icon-64.png","/img/icon-128.png","/img/icon-192.png","/img/icon-512.png","/img/stars-a.svg","/img/stars-b.svg","/app.html","/r/","/r/r.js","/img/badges/de.svg","/img/badges/en.svg","/img/badges/es.svg","/img/badges/fr.svg","/img/badges/it.svg","/img/badges/ja.svg","/img/badges/ko.svg","/img/badges/nl.svg","/img/badges/pl.svg","/img/badges/pt-BR.svg","/img/badges/ru.svg","/img/badges/sv.svg","/img/badges/tr.svg","/img/badges/zh-Hans.svg","/img/badges/zh-Hant.svg"];
 var LANG_PREFIXES = ["de/","fr/","it/","es/","pt-br/","nl/","sv/","pl/","tr/","ru/","ja/","ko/","zh-hans/","zh-hant/"];
 
