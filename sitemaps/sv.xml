@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<url><loc>https://augura.fyi/sv/about.html</loc><lastmod>2026-11-01</lastmod>
+<xhtml:link rel="alternate" hreflang="en" href="https://augura.fyi/about.html"/>
+<xhtml:link rel="alternate" hreflang="de" href="https://augura.fyi/de/about.html"/>
+<xhtml:link rel="alternate" hreflang="fr" href="https://augura.fyi/fr/about.html"/>
+<xhtml:link rel="alternate" hreflang="it" href="https://augura.fyi/it/about.html"/>
+<xhtml:link rel="alternate" hreflang="es" href="https://augura.fyi/es/about.html"/>
+<xhtml:link rel="alternate" hreflang="pt-BR" href="https://augura.fyi/pt-br/about.html"/>
+<xhtml:link rel="alternate" hreflang="nl" href="https://augura.fyi/nl/about.html"/>
+<xhtml:link rel="alternate" hreflang="sv" href="https://augura.fyi/sv/about.html"/>
+<xhtml:link rel="alternate" hreflang="pl" href="https://augura.fyi/pl/about.html"/>
+<xhtml:link rel="alternate" hreflang="tr" href="https://augura.fyi/tr/about.html"/>
+<xhtml:link rel="alternate" hreflang="ru" href="https://augura.fyi/ru/about.html"/>
+<xhtml:link rel="alternate" hreflang="ja" href="https://augura.fyi/ja/about.html"/>
+<xhtml:link rel="alternate" hreflang="ko" href="https://augura.fyi/ko/about.html"/>
+<xhtml:link rel="alternate" hreflang="zh-Hans" href="https://augura.fyi/zh-hans/about.html"/>
+<xhtml:link rel="alternate" hreflang="zh-Hant" href="https://augura.fyi/zh-hant/about.html"/>
+<xhtml:link rel="alternate" hreflang="x-default" href="https://augura.fyi/about.html"/>
+</url>
 <url><loc>https://augura.fyi/sv/app.html</loc><lastmod>2026-11-01</lastmod>
 <xhtml:link rel="alternate" hreflang="en" href="https://augura.fyi/app.html"/>
 <xhtml:link rel="alternate" hreflang="de" href="https://augura.fyi/de/app.html"/>
