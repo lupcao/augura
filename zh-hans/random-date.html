@@ -29,7 +29,7 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/img/icon-180.png">
-<link rel="stylesheet" href="/assets/site.24bee112.css">
+<link rel="stylesheet" href="/assets/site.37b43b58.css">
 <link rel="stylesheet" href="/assets/app.2b1d55b4.css">
 <link rel="manifest" href="/zh-hans/manifest.webmanifest">
 <meta property="og:type" content="website">
@@ -216,6 +216,26 @@
 <li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>公平：每个结果都来自浏览器的安全随机数生成器（crypto.getRandomValues），没有偏差。</li>
 <li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>私密：你输入或抽到的内容都不会离开此页面。无 Cookie，不追踪。</li>
 </ul>
+</section>
+<section class="learn" aria-labelledby="learn-h">
+<h2 id="learn-h">一个完整的示例</h2>
+<figure class="sample">
+<figcaption>结果示例（仅作演示，并非真实抽取）</figcaption>
+<p class="s-main">2027-03-14</p>
+</figure>
+<p>示例在两个日期之间选了一天，两端的日期也都有可能出现。页面会用你的语言把结果完整写出来，并带上星期几。</p>
+</section>
+<section class="learn" aria-labelledby="opts-h">
+<h2 id="opts-h">选项</h2>
+<p>可以任选开始和结束日期，相隔最多 100 年，两端都包含在内。页面默认从今天开始，后面再加 364 天。</p>
+</section>
+<section class="learn" aria-labelledby="uses-h">
+<h2 id="uses-h">实际用途</h2>
+<p>在大家都方便的日期里选一天去野餐或聚会，为写作挑战抽一个随机日期，或者找一个历史上的日子去查资料。</p>
+</section>
+<section class="learn" aria-labelledby="rng-h">
+<h2 id="rng-h">随机是怎么实现的</h2>
+<p>页面数出两个日期之间的天数，再由安全随机数生成器从中选一个位置，所以星期一、节假日或闰日和其他日子的概率一样。</p>
 </section>
 <section aria-labelledby="more-h">
 <h2 id="more-h">更多生成器</h2>

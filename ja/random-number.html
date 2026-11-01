@@ -29,7 +29,7 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/img/icon-180.png">
-<link rel="stylesheet" href="/assets/site.24bee112.css">
+<link rel="stylesheet" href="/assets/site.37b43b58.css">
 <link rel="stylesheet" href="/assets/app.2b1d55b4.css">
 <link rel="manifest" href="/ja/manifest.webmanifest">
 <meta property="og:type" content="website">
@@ -216,6 +216,27 @@
 <li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>公平：すべての結果は、ブラウザの安全な乱数生成機能（crypto.getRandomValues）から、偏りなく得られます。</li>
 <li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>プライベート：入力した内容も引いた結果も、このページの外には出ません。Cookieなし、トラッキングなし。</li>
 </ul>
+</section>
+<section class="learn" aria-labelledby="learn-h">
+<h2 id="learn-h">具体例で見る</h2>
+<figure class="sample">
+<figcaption>結果のサンプル（イメージであり、実際の抽選ではありません）</figcaption>
+<p class="s-main">73</p>
+<p class="s-line">1 – 100</p>
+</figure>
+<p>このサンプルは初期設定の範囲、1〜100を使い、73が出ました。両端も出ることがあり、間のどの数も同じ確率でした。結果の下の行に範囲が表示されます。</p>
+</section>
+<section class="learn" aria-labelledby="opts-h">
+<h2 id="opts-h">オプション</h2>
+<p>負の数を含む任意の整数2つを選べます。順番を逆に入れても、ページが自動で並べ替えます。範囲には40億強の値まで含められます。</p>
+</section>
+<section class="learn" aria-labelledby="uses-h">
+<h2 id="uses-h">実際の使いみち</h2>
+<p>お楽しみ会の抽選券の番号を引く、読むページや章を決める、出席番号で生徒を選ぶ、数当てゲームの秘密の数を決める、といった使い方があります。</p>
+</section>
+<section class="learn" aria-labelledby="rng-h">
+<h2 id="rng-h">乱数のしくみ</h2>
+<p>ページは安全な乱数生成機能に、範囲の大きさより小さい数を要求し、割り切れない端数にあたる値は捨てます。そのため、どの数も有利になりません。本物のサイコロと同じく、同じ数が重なることもあります。</p>
 </section>
 <section aria-labelledby="more-h">
 <h2 id="more-h">ほかのジェネレーター</h2>

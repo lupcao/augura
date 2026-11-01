@@ -29,7 +29,7 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/img/icon-180.png">
-<link rel="stylesheet" href="/assets/site.24bee112.css">
+<link rel="stylesheet" href="/assets/site.37b43b58.css">
 <link rel="stylesheet" href="/assets/app.2b1d55b4.css">
 <link rel="manifest" href="/zh-hans/manifest.webmanifest">
 <meta property="og:type" content="website">
@@ -223,6 +223,28 @@
 <li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>公平：每个结果都来自浏览器的安全随机数生成器（crypto.getRandomValues），没有偏差。</li>
 <li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>私密：你输入或抽到的内容都不会离开此页面。无 Cookie，不追踪。</li>
 </ul>
+</section>
+<section class="learn" aria-labelledby="learn-h">
+<h2 id="learn-h">一个完整的示例</h2>
+<figure class="sample">
+<figcaption>结果示例（仅作演示，并非真实抽取）</figcaption>
+<p class="s-main">小组数：2</p>
+<p class="s-line">第 1 组：玩家4、玩家1、玩家6</p>
+<p class="s-line">第 2 组：玩家5、玩家2、玩家3</p>
+</figure>
+<p>示例把六名玩家分成两队。名单先被打乱，所以谁和谁一队是随机的；如果不能平均分，各队人数最多相差一人。</p>
+</section>
+<section class="learn" aria-labelledby="opts-h">
+<h2 id="opts-h">选项</h2>
+<p>最多输入 200 个名字，每行一个，可以按队数（2 到 20）或每队人数（1 到 50）来分。各队按一个名字一个名字依次补满。</p>
+</section>
+<section class="learn" aria-labelledby="uses-h">
+<h2 id="uses-h">实际用途</h2>
+<p>为课堂项目分组，把训练分成小队，为游戏之夜挑队伍，或者给客人安排桌位。</p>
+</section>
+<section class="learn" aria-labelledby="rng-h">
+<h2 id="rng-h">随机是怎么实现的</h2>
+<p>整份名单用费雪–耶茨方法，借助安全随机数生成器提供的无偏数字打乱，再像发牌一样分发。不会按水平、年龄或名单里的位置来安排任何人，名字也绝不会离开你的浏览器。</p>
 </section>
 <section aria-labelledby="more-h">
 <h2 id="more-h">更多生成器</h2>

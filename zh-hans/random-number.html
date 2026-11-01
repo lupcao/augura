@@ -29,7 +29,7 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/img/icon-180.png">
-<link rel="stylesheet" href="/assets/site.24bee112.css">
+<link rel="stylesheet" href="/assets/site.37b43b58.css">
 <link rel="stylesheet" href="/assets/app.2b1d55b4.css">
 <link rel="manifest" href="/zh-hans/manifest.webmanifest">
 <meta property="og:type" content="website">
@@ -216,6 +216,27 @@
 <li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>公平：每个结果都来自浏览器的安全随机数生成器（crypto.getRandomValues），没有偏差。</li>
 <li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>私密：你输入或抽到的内容都不会离开此页面。无 Cookie，不追踪。</li>
 </ul>
+</section>
+<section class="learn" aria-labelledby="learn-h">
+<h2 id="learn-h">一个完整的示例</h2>
+<figure class="sample">
+<figcaption>结果示例（仅作演示，并非真实抽取）</figcaption>
+<p class="s-main">73</p>
+<p class="s-line">1 – 100</p>
+</figure>
+<p>这个示例用了默认范围 1 到 100，结果是 73。两端的数都可能出现，中间每个数的概率也都相同。结果下方的一行显示范围。</p>
+</section>
+<section class="learn" aria-labelledby="opts-h">
+<h2 id="opts-h">选项</h2>
+<p>可以选任意两个整数，包括负数；如果填反了，页面会自动排好顺序。范围最多可包含四十多亿个值。</p>
+</section>
+<section class="learn" aria-labelledby="uses-h">
+<h2 id="uses-h">实际用途</h2>
+<p>抽取抽奖券号码，选一页或一章来读，按学号挑一名学生，或者为猜数字游戏想一个秘密数字。</p>
+</section>
+<section class="learn" aria-labelledby="rng-h">
+<h2 id="rng-h">随机是怎么实现的</h2>
+<p>页面向安全随机数生成器要一个小于范围大小的数，并丢弃落在不均匀余数里的值，所以没有哪个数会占便宜。和真正的骰子一样，数字可能重复。</p>
 </section>
 <section aria-labelledby="more-h">
 <h2 id="more-h">更多生成器</h2>

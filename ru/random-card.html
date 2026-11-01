@@ -29,7 +29,7 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/img/icon-180.png">
-<link rel="stylesheet" href="/assets/site.24bee112.css">
+<link rel="stylesheet" href="/assets/site.37b43b58.css">
 <link rel="stylesheet" href="/assets/app.2b1d55b4.css">
 <link rel="manifest" href="/ru/manifest.webmanifest">
 <meta property="og:type" content="website">
@@ -216,6 +216,27 @@
 <li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>Честно: каждый результат берётся из безопасного генератора случайных чисел твоего браузера (crypto.getRandomValues), без смещения.</li>
 <li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>Приватно: ничто из введённого или вытянутого тобой не покидает эту страницу. Без cookie, без слежки.</li>
 </ul>
+</section>
+<section class="learn" aria-labelledby="learn-h">
+<h2 id="learn-h">Разбор на примере</h2>
+<figure class="sample">
+<figcaption>Пример результата (иллюстрация, а не настоящий розыгрыш)</figcaption>
+<p class="s-main">Червы: Дама</p>
+<p class="s-line">Осталось карт: 51</p>
+</figure>
+<p>Карта вышла из перемешанной колоды, а строка под ней считает карты, которые в ней ещё остались. Вытянутые карты остаются вне колоды, пока ты не нажмёшь «Перемешать», поэтому одна и та же карта не может выпасть дважды подряд.</p>
+</section>
+<section class="learn" aria-labelledby="opts-h">
+<h2 id="opts-h">Настройки</h2>
+<p>Используй стандартную колоду из 52 карт или добавь двух джокеров, чтобы получилось 54. «Перемешать» возвращает все карты, а счётчик показывает, сколько их осталось.</p>
+</section>
+<section class="learn" aria-labelledby="uses-h">
+<h2 id="uses-h">Для чего это нужно</h2>
+<p>Вытянуть карту для фокуса или быстрой карточной игры, определить сдающего по старшей карте, сыграть в «больше — меньше» или выбрать случайного игрока по масти.</p>
+</section>
+<section class="learn" aria-labelledby="rng-h">
+<h2 id="rng-h">Как работает случайность</h2>
+<p>Каждая выдача берёт случайную позицию среди карт, которые ещё в колоде, а затем убирает эту карту. Это то же самое, что сдавать из хорошо перемешанной колоды, пока не кончится последняя карта.</p>
 </section>
 <section aria-labelledby="more-h">
 <h2 id="more-h">Другие генераторы</h2>

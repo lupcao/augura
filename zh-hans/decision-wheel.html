@@ -29,7 +29,7 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/img/icon-180.png">
-<link rel="stylesheet" href="/assets/site.24bee112.css">
+<link rel="stylesheet" href="/assets/site.37b43b58.css">
 <link rel="stylesheet" href="/assets/app.2b1d55b4.css">
 <link rel="manifest" href="/zh-hans/manifest.webmanifest">
 <meta property="og:type" content="website">
@@ -218,6 +218,27 @@
 <li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>公平：每个结果都来自浏览器的安全随机数生成器（crypto.getRandomValues），没有偏差。</li>
 <li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>私密：你输入或抽到的内容都不会离开此页面。无 Cookie，不追踪。</li>
 </ul>
+</section>
+<section class="learn" aria-labelledby="learn-h">
+<h2 id="learn-h">一个完整的示例</h2>
+<figure class="sample">
+<figcaption>结果示例（仅作演示，并非真实抽取）</figcaption>
+<p class="s-main">饺子</p>
+<p class="s-line">火锅、饺子、麻辣烫</p>
+</figure>
+<p>示例转盘有三个选项，并停在其中一个上。获胜者先被选出，转盘再转动并停在它上面，所以旋转只是演出。所有扇区一样大。</p>
+</section>
+<section class="learn" aria-labelledby="opts-h">
+<h2 id="opts-h">选项</h2>
+<p>最多输入 100 个选项，每行一个，每个最多 80 个字符。转盘会随着你输入而重新绘制，想转几次都可以。</p>
+</section>
+<section class="learn" aria-labelledby="uses-h">
+<h2 id="uses-h">实际用途</h2>
+<p>选一家餐厅，决定课堂上下一个发言的人，从输入的名字里抽出奖品得主，或者决定游戏之夜看哪部电影。</p>
+</section>
+<section class="learn" aria-labelledby="rng-h">
+<h2 id="rng-h">随机是怎么实现的</h2>
+<p>转盘转动之前，安全随机数生成器先随机选出一个行号作为获胜者；转的圈数也是随机的，但不会改变结果。重复的行算作各自独立的扇区。</p>
 </section>
 <section aria-labelledby="more-h">
 <h2 id="more-h">更多生成器</h2>

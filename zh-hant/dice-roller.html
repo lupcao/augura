@@ -29,7 +29,7 @@
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/img/icon-180.png">
-<link rel="stylesheet" href="/assets/site.24bee112.css">
+<link rel="stylesheet" href="/assets/site.37b43b58.css">
 <link rel="stylesheet" href="/assets/app.2b1d55b4.css">
 <link rel="manifest" href="/zh-hant/manifest.webmanifest">
 <meta property="og:type" content="website">
@@ -216,6 +216,27 @@
 <li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>公平：每個結果都來自瀏覽器的安全亂數產生器（crypto.getRandomValues），沒有偏差。</li>
 <li><svg class="ic" aria-hidden="true"><use href="#i-star4"/></svg>注重隱私：你輸入或抽到的內容都不會離開此頁面。無 Cookie，不追蹤。</li>
 </ul>
+</section>
+<section class="learn" aria-labelledby="learn-h">
+<h2 id="learn-h">一個完整的範例</h2>
+<figure class="sample">
+<figcaption>結果範例（僅供示範，並非真實抽取）</figcaption>
+<p class="s-main">9 (4 + 5)</p>
+<p class="s-line">已擲次數：1</p>
+</figure>
+<p>兩顆六面骰子（2d6）擲出了 4 和 5。大數字是總和，括號裡列出每顆骰子的點數，下面一行統計你擲了幾次。</p>
+</section>
+<section class="learn" aria-labelledby="opts-h">
+<h2 id="opts-h">選項</h2>
+<p>一次可擲 1 到 20 顆骰子，面數可選 4、6、8、10、12、20 或 100。六面骰子畫成帶點的骰子，其他面數則顯示為有編號的寶石。</p>
+</section>
+<section class="learn" aria-labelledby="uses-h">
+<h2 id="uses-h">實際用途</h2>
+<p>玩沒帶骰子的桌遊，為桌上角色扮演遊戲擲 d20，為百分比檢定擲 d100，或者向全班展示兩顆骰子的點數之和如何集中在 7 附近。</p>
+</section>
+<section class="learn" aria-labelledby="rng-h">
+<h2 id="rng-h">隨機是怎麼實現的</h2>
+<p>每顆骰子都從安全亂數產生器取自己的數字，並丟棄會偏向小點數的值，所以 d100 的每一面機率完全相同。骰子不會記住之前的結果。</p>
 </section>
 <section aria-labelledby="more-h">
 <h2 id="more-h">更多產生器</h2>
