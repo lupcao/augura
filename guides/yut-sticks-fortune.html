@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27;; img-src &#x27;self&#x27; data:; font-src &#x27;self&#x27;; connect-src &#x27;self&#x27;; manifest-src &#x27;self&#x27;; worker-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;">
 <meta name="referrer" content="no-referrer">
 <title>Yut Sticks Fortune – Throw Four Sticks for One of 64 Signs | Augura</title>
-<meta name="description" content="How the Augura iPhone app throws four yut sticks three times and reads one of 64 traditional Korean New Year phrases, the fortune use, not the board game.">
+<meta name="description" content="Throw four yut sticks three times in your browser and read one of 64 traditional Korean New Year phrases. Not the board game. The iPhone app has 3D sticks.">
 <link rel="canonical" href="https://augura.fyi/guides/yut-sticks-fortune.html">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#03050b">
@@ -14,10 +14,13 @@
 <link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/img/icon-180.png">
 <link rel="stylesheet" href="/assets/site.37b43b58.css">
+<link rel="stylesheet" href="/assets/tools.21341db6.css">
+<script src="/assets/wtdata-yutSticks.0c53d2f0.js" defer></script>
+<script src="/assets/tools.14bc2418.js" defer></script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Augura">
 <meta property="og:title" content="Yut Sticks Fortune – Throw Four Sticks for One of 64 Signs | Augura">
-<meta property="og:description" content="How the Augura iPhone app throws four yut sticks three times and reads one of 64 traditional Korean New Year phrases, the fortune use, not the board game.">
+<meta property="og:description" content="Throw four yut sticks three times in your browser and read one of 64 traditional Korean New Year phrases. Not the board game. The iPhone app has 3D sticks.">
 <meta property="og:url" content="https://augura.fyi/guides/yut-sticks-fortune.html">
 <meta property="og:image" content="https://augura.fyi/img/og/og-en.jpg">
 <meta property="og:image:width" content="1200">
@@ -25,7 +28,7 @@
 <meta property="og:image:alt" content="Augura: a calm, private toolbox for chance, with three iPhone screenshots">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://augura.fyi/","name":"Augura","position":1},{"@type":"ListItem","item":"https://augura.fyi/guides/index.html","name":"Guides","position":2},{"@type":"ListItem","item":"https://augura.fyi/guides/yut-sticks-fortune.html","name":"Yut sticks fortune (yutjeom) in the Augura app","position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://augura.fyi/","name":"Augura","position":1},{"@type":"ListItem","item":"https://augura.fyi/guides/index.html","name":"Guides","position":2},{"@type":"ListItem","item":"https://augura.fyi/guides/yut-sticks-fortune.html","name":"Yut sticks fortune (yutjeom)","position":3}]}</script>
 <script src="/assets/site.18f15d92.js" defer></script>
 </head>
 <body class="sky" data-page="guide">
@@ -89,8 +92,21 @@
 <main id="main" class="page">
 <p class="back"><a href="/">← Augura</a> · <a href="/guides/index.html">All guides</a></p>
 <article class="guide prose">
-<h1>Yut sticks fortune (yutjeom) in the Augura app</h1>
-<p class="lead">Throw four wooden sticks three times and read the traditional Korean New Year phrase the throws spell: yutjeom, a gentle family custom. This page is a guide to the Yut sticks mode in the Augura iPhone app (coming soon to the App Store). There is no web version of this mode.</p>
+<h1>Yut sticks fortune (yutjeom)</h1>
+<p class="lead">Throw four wooden sticks three times and read the traditional Korean New Year phrase the throws spell: yutjeom, a gentle family custom. This page has a free browser tool at the top and a guide to the Yut sticks mode in the Augura iPhone app (coming soon to the App Store). The browser tool is simpler than the app mode: there is no web version of the full mode.</p>
+<h2>Throw the yut sticks here</h2>
+<section class="wtool" id="wt-yutSticks" data-wt="yutSticks" data-sticks="4" data-throws="3" data-framing="Presented for reflection and entertainment, not as prediction" role="group" aria-label="Yut sticks fortune (yutjeom)">
+<p>Hold a wish or a question quietly in mind, or just enjoy the throw, then press Throw the sticks. Four sticks are thrown three times and the three results give one traditional Korean New Year phrase to reflect on.</p>
+<noscript><p class="wt-nojs">This tool needs JavaScript, which is switched off in this browser.</p></noscript>
+<div class="wt-ui" hidden>
+<div class="wt-row"><button type="button" class="btn" id="wt-yut-go">Throw the sticks</button></div>
+<div class="wt-result wt-short" id="wt-yut-out" role="status" aria-live="polite"></div>
+<div class="wt-reading" id="wt-yut-reading"></div>
+<p class="wt-framing" id="wt-yut-note" hidden></p>
+</div>
+<h3>What this tool does</h3>
+<ul><li>Four sticks are thrown 3 times. Each stick lands flat or round side up with equal chance, so the throws behave like real sticks: one flat is do (도), two is gae (개), three is geol (걸), four flat is yut (윷) and none flat is mo (모); yut and mo both count 4. The three numbers pick one of 64 signs. The signs are not equally likely: gae is the most common and yut or mo the rarest.</li><li>Yutjeom (윷점) is a Korean New Year custom and a living family tradition. The 64 four-character phrases are traditional Joseon-era text (public domain), checked against the table of the National Hangeul Museum and the Academy of Korean Studies encyclopedia. The Hangul readings, the Korean and English lines and the reflections were written for Augura and may differ from old booklets.</li><li>This is not the board game yutnori. The browser version shows the throws as a list with a picture of the four sticks: it has no 3D sticks, no shake, no history and no share card (the app has them).</li><li>The phrase is an image to think about, not a prediction.</li><li>Everything runs in this page on your device with the browser&#x27;s secure random generator. No request is sent after the page loads, no account is needed and nothing is saved: closing or reloading the tab clears it.</li></ul>
+</section>
 <h2>What it is</h2>
 <p>Yutjeom (윷점) is a Korean New Year custom. A family throws four half-round wooden yut sticks three times and reads a short, old four-character phrase that goes with the three results. Augura throws four 3D sticks for you, three times, then shows the phrase in Hanja (the Chinese characters used in Korea), its Hangul reading, a short line in Korean and English, and a gentle thought to reflect on.</p>
 <h2>How to use it</h2>
@@ -107,7 +123,7 @@
 <p class="s-main">飛蛾撲燈 (비아박등)</p>
 <p class="s-line">나방이 등불로 날아든다.</p>
 <p class="s-line">A moth flies toward the lamp.</p>
-<dl class="s-read"><dt>Reflection</dt><dd>What draws you in? Admire the light, and keep a little distance.</dd></dl>
+<dl class="s-read"><dt>Throws</dt><dd>throw 1: do (도), one flat stick; throw 2: gae (개), two flat sticks; throw 3: geol (걸), three flat sticks</dd><dt>Reflection</dt><dd>What draws you in? Admire the light, and keep a little distance.</dd></dl>
 <p class="s-note">Presented for reflection and entertainment, not as prediction</p>
 </figure>
 <h2>The odds</h2>
@@ -122,7 +138,7 @@
 <h3>Credit</h3>
 <p>The 64 four-character phrases are traditional Joseon-era folk text (public domain), checked against the table of the National Hangeul Museum (hangeul.go.kr, webzine February 2021) and the Academy of Korean Studies encyclopedia (encykorea.aks.ac.kr, “Yutjeom”). Only the Hanja phrases were taken; the Hangul readings, Korean and English lines and reflections were written for Augura. No CC BY or CC BY-SA data is used.</p>
 <h2>What it cannot do</h2>
-<ul><li>It is not the board game yutnori. There is no board, no tokens, no rules and no online match here.</li><li>It does not predict anything. The phrase is an image to think about, and the English and Korean lines were written for Augura.</li><li>The Korean wording of the lines may differ from the explanations printed in old yutjeom booklets.</li></ul>
+<ul><li>It is not the board game yutnori. There is no board, no tokens, no rules and no online match here.</li><li>The browser tool throws no 3D sticks and has no shake, history or share card: those are in the app. It saves nothing.</li><li>It does not predict anything. The phrase is an image to think about, and the English and Korean lines were written for Augura.</li><li>The Korean wording of the lines may differ from the explanations printed in old yutjeom booklets.</li></ul>
 <h2>Related</h2>
 <ul><li><a href="/i-ching.html">I Ching: three-coin hexagram reading</a></li><li><a href="/omikuji.html">Omikuji: a Japanese fortune slip</a></li><li><a href="/guides/index.html">All guides to what Augura can do</a></li></ul>
 </article>

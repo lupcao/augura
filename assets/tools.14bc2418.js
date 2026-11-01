@@ -524,16 +524,197 @@ function initFood(root, data) {
   refresh();
 }
 
+// ---------- 9. the three oracle tools (39.12): yut sticks, ogham, tea leaves
+// Like the draws of the web app (38.17), the result is chosen first and then shown: a short line in a live region (name and one
+// sentence), the whole reading in its own element right under it, then the framing line. No animation, so nothing to skip.
+function showOracle(root, prefix, shortText, buildReading) {
+  var out = $("wt-" + prefix + "-out"), reading = $("wt-" + prefix + "-reading"), note = $("wt-" + prefix + "-note");
+  clearNode(out); clearNode(reading);
+  out.appendChild(elt("p", "wt-big", shortText));
+  buildReading(reading);
+  note.textContent = root.getAttribute("data-framing") || "";
+  note.hidden = !note.textContent;
+}
+function svgEl(tag, attrs, cls) {
+  var e = document.createElementNS("http://www.w3.org/2000/svg", tag), k;
+  for (k in attrs) if (Object.prototype.hasOwnProperty.call(attrs, k)) e.setAttribute(k, String(attrs[k]));
+  if (cls) e.setAttribute("class", cls);
+  return e;
+}
+function svgRoot(box, size, label) {
+  var s = svgEl("svg", { viewBox: box, width: size, height: size, focusable: "false", "aria-hidden": "true" }, "wt-pic");
+  if (label) s.setAttribute("data-label", label);
+  return s;
+}
+function lowerFirst(s) { return s.charAt(0).toLowerCase() + s.slice(1); }
+
+// yut sticks: four sticks, each flat or round side up with equal chance; the flat count of a throw is 1 do, 2 gae, 3 geol, 4 yut,
+// 0 mo, and yut and mo both count 4. Three throws give three numbers 1 to 4, e.g. "123", which name one of 64 signs.
+wt.YUT_NAMES = ["mo", "do", "gae", "geol", "yut"];                                       // by number of flat sides up
+wt.YUT_HANGUL = ["모", "도", "개", "걸", "윷"];
+wt.yutValue = function (flat) { return flat === 0 ? 4 : flat; };
+wt.yutThrow = function (sticks) { var out = [], i; for (i = 0; i < sticks; i++) out.push(randInt(2) === 1); return out; };
+wt.yutDraw = function (sticks, throws) {
+  var rows = [], key = "", i, flat;
+  for (i = 0; i < throws; i++) {
+    rows.push(wt.yutThrow(sticks));
+    flat = rows[i].filter(Boolean).length;
+    key += String(wt.yutValue(flat));
+  }
+  return { throws: rows, key: key };
+};
+wt.yutSign = function (signs, key) {
+  for (var i = 0; i < signs.length; i++) if (signs[i].id === key) return signs[i];
+  return null;
+};
+
+function initYut(root, data) {
+  var sticks = intAttr(root, "sticks"), throws = intAttr(root, "throws");
+  $("wt-yut-go").addEventListener("click", function () {
+    var draw = wt.yutDraw(sticks, throws), sign = wt.yutSign(data.signs, draw.key);
+    if (!sign) { showError("wt-yut-out", "No sign was found for these throws. Please reload the page."); return; }
+    showOracle(root, "yut", sign.hanja + " (" + sign.hangul + "): " + sign.line, function (box) {
+      box.appendChild(elt("h4", null, "The throws: " + draw.key.split("").join("-")));
+      var ol = elt("ol", "wt-throws");
+      draw.throws.forEach(function (row, t) {
+        var flat = row.filter(Boolean).length, li = elt("li"), pic = elt("span", "wt-sticks");
+        row.forEach(function (isFlat) { pic.appendChild(elt("span", "wt-stick " + (isFlat ? "flat" : "round"))); });
+        pic.setAttribute("aria-hidden", "true");
+        li.appendChild(pic);
+        li.appendChild(elt("span", null, "Throw " + (t + 1) + ": " + (flat === 0 ? "no stick" : plural(flat, "stick", "sticks")) +
+          " flat side up. " + wt.YUT_NAMES[flat] + " (" + wt.YUT_HANGUL[flat] + "), counts as " + wt.yutValue(flat) + "."));
+        ol.appendChild(li);
+      });
+      box.appendChild(ol);
+      box.appendChild(elt("h4", null, "The sign"));
+      box.appendChild(elt("p", "wt-line", sign.ko));
+      box.appendChild(elt("p", null, sign.line));
+      box.appendChild(elt("h4", null, "To reflect on"));
+      box.appendChild(elt("p", null, sign.reflection));
+    });
+  });
+}
+
+// ogham: one letter (stave) of the 20, or three different ones read as past, present and future
+wt.oghamDraw = function (count, total) {
+  var idx = [], i;
+  for (i = 0; i < total; i++) idx.push(i);
+  return shuffle(idx).slice(0, count);
+};
+wt.OGHAM_SLOTS = ["Past", "Present", "Future"];
+
+function oghamPicture(f) {
+  var s = svgRoot("0 0 100 100", 72), i;
+  s.appendChild(svgEl("line", { x1: 50, y1: 6, x2: 50, y2: 94 }, "wt-stem"));
+  for (i = 0; i < f.strokes.length; i++) {
+    var st = f.strokes[i];
+    s.appendChild(svgEl("line", { x1: st[0] * 100, y1: st[1] * 100, x2: st[2] * 100, y2: st[3] * 100 }, "wt-stroke"));
+  }
+  return s;
+}
+
+function initOgham(root, data) {
+  var spreads = root.getAttribute("data-spreads").split(",").map(Number), spread = spreads[0];
+  var seg = $("wt-ogham-spread"), btns = seg.querySelectorAll("button"), i;
+  function sync() {
+    for (var k = 0; k < btns.length; k++) btns[k].setAttribute("aria-pressed", String(parseInt(btns[k].getAttribute("data-v"), 10) === spread));
+  }
+  for (i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+      var v = parseInt(this.getAttribute("data-v"), 10);
+      if (spreads.indexOf(v) >= 0) { spread = v; sync(); }
+    });
+  }
+  function title(f) { return f.name + " (" + f.tree.toLowerCase() + ")"; }
+  $("wt-ogham-go").addEventListener("click", function () {
+    var picked = wt.oghamDraw(spread, data.feda.length).map(function (n) { return data.feda[n]; });
+    var shortText = spread === 1 ? title(picked[0]) : picked.map(function (f, n) { return wt.OGHAM_SLOTS[n] + ": " + title(f); }).join(" · ");
+    showOracle(root, "ogham", shortText, function (box) {
+      picked.forEach(function (f, n) {
+        var sec = elt("section", "wt-stave");
+        sec.appendChild(elt("h4", null, (spread === 3 ? wt.OGHAM_SLOTS[n] + ": " : "") + f.name + ", " + f.tree.toLowerCase() + " (Irish: " + f.tree_irish + ")"));
+        sec.appendChild(oghamPicture(f));
+        sec.appendChild(elt("p", "wt-meta", f.keywords.join(", ")));
+        sec.appendChild(elt("p", null, f.meaning));
+        sec.appendChild(elt("p", null, f.lore));
+        if (f.kennings.length) {
+          sec.appendChild(elt("p", "wt-meta", "Old phrases for this letter: " +
+            f.kennings.map(function (k) { return k.english + " (" + k.irish + ")"; }).join("; ") + "."));
+        }
+        var group = data.aicmi[f.aicme];
+        sec.appendChild(elt("p", "wt-meta", group.name + ": " + lowerFirst(group.note) + "."));
+        box.appendChild(sec);
+      });
+    });
+  });
+  sync();
+}
+
+// tea leaves: 3 to 5 different symbols, every one of the three zones used at least once, read from the rim to the bottom
+wt.TEA_RADII = [[780, 920], [440, 620], [0, 200]];           // distance from the middle in thousandths of the cup, per zone
+wt.teaPour = function (symbolCount, min, max) {
+  var count = min + randInt(max - min + 1), zones = [0, 1, 2], idx = [], leaves = [], start = randInt(360), i, r;
+  while (zones.length < count) zones.push(randInt(3));
+  shuffle(zones);
+  for (i = 0; i < symbolCount; i++) idx.push(i);
+  shuffle(idx);
+  for (i = 0; i < count; i++) {
+    r = wt.TEA_RADII[zones[i]];
+    leaves.push({ symbol: idx[i], zone: zones[i], order: i,
+                  angle: start + i * 360 / count + randInt(31) - 15, radius: (r[0] + randInt(r[1] - r[0] + 1)) / 1000 });
+  }
+  leaves.sort(function (a, b) { return a.zone - b.zone || a.order - b.order; });
+  return leaves;
+};
+
+function teaPicture(leaves) {
+  var s = svgRoot("-100 -100 200 200", 220), i;
+  s.appendChild(svgEl("circle", { cx: 0, cy: 0, r: 96 }, "wt-cup"));
+  s.appendChild(svgEl("circle", { cx: 0, cy: 0, r: 66 }, "wt-cup-ring"));
+  s.appendChild(svgEl("circle", { cx: 0, cy: 0, r: 30 }, "wt-cup-ring"));
+  for (i = 0; i < leaves.length; i++) {
+    var a = leaves[i].angle * Math.PI / 180, d = leaves[i].radius * 90, g = svgEl("g", { transform: "translate(" + (d * Math.cos(a)).toFixed(1) + " " + (d * Math.sin(a)).toFixed(1) + ")" });
+    g.appendChild(svgEl("circle", { cx: 0, cy: 0, r: 9 }, "wt-leaf"));
+    var t = svgEl("text", { x: 0, y: 4, "text-anchor": "middle" }, "wt-leaf-n");
+    t.textContent = String(i + 1);
+    g.appendChild(t); s.appendChild(g);
+  }
+  return s;
+}
+
+function initTea(root, data) {
+  var min = intAttr(root, "min"), max = intAttr(root, "max");
+  $("wt-tea-go").addEventListener("click", function () {
+    var leaves = wt.teaPour(data.symbols.length, min, max);
+    var shortText = plural(leaves.length, "symbol", "symbols") + ": " + leaves.map(function (l) {
+      return data.symbols[l.symbol].name + " (" + data.zones[l.zone].time.toLowerCase() + ")";
+    }).join(", ");
+    showOracle(root, "tea", shortText, function (box) {
+      box.appendChild(teaPicture(leaves));
+      var ol = elt("ol", "wt-leaves");
+      leaves.forEach(function (l) {
+        var z = data.zones[l.zone], sym = data.symbols[l.symbol], li = elt("li");
+        li.appendChild(elt("strong", null, z.time + " · " + z.name + ": " + sym.name + ". "));
+        li.appendChild(document.createTextNode(sym.meaning));
+        ol.appendChild(li);
+      });
+      box.appendChild(ol);
+      box.appendChild(elt("p", "wt-meta", "Read from the rim to the bottom as a short story, and take it as food for thought. " +
+        data.zones.map(function (z) { return z.note; }).join(" ")));
+    });
+  });
+}
+
 // ---------- start whatever tool this page has
 (function () {
   var root = document.querySelector("section.wtool[data-wt]");
   if (!root) return;
   var ui = root.querySelector(".wt-ui"), key = root.getAttribute("data-wt");
   var init = { name: initName, secretSanta: initSanta, bracket: initBracket, bingo: initBingo, scoreboard: initScore,
-               party: initParty, codes: initCodes, food: initFood }[key];
+               party: initParty, codes: initCodes, food: initFood, yutSticks: initYut, ogham: initOgham, teaLeaves: initTea }[key];
   if (!init || !ui) return;
   var data = (window.auguraToolData || {})[key];
-  if (key === "party" || key === "codes" || key === "food") {       // these three need their data script
+  if (["party", "codes", "food", "yutSticks", "ogham", "teaLeaves"].indexOf(key) >= 0) {       // these tools need their data script
     if (!data) { root.insertBefore(elt("p", "wt-err", "This tool's data did not load. Reload the page to try again."), ui); return; }
   }
   init(root, data);

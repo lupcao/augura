@@ -76,6 +76,30 @@
 .wtool select { min-height: 48px; max-width: 100%; box-sizing: border-box; color: var(--text); background: rgba(3, 6, 15, .7); border: 1px solid var(--line-strong);
   border-radius: 12px; padding: 8px 12px; font: 16px/1.4 var(--sans); }
 .wtool .wt-row label[for^="wt-food"] { min-width: 6.5em; }
+.wtool .wt-short:not(:empty) { margin-top: 14px; }
+.wtool .wt-short .wt-big { margin: 0; }
+.wtool .wt-reading:not(:empty) { margin-top: 12px; padding: 4px 16px 6px; border-radius: 16px; border: 1px solid var(--line); background: rgba(3, 6, 15, .45); }
+.wtool .wt-reading h4 { margin: 14px 0 6px; font: 600 14px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--gold); overflow-wrap: anywhere; }
+.wtool .wt-reading p { margin: 8px 0; overflow-wrap: anywhere; }
+.wtool .wt-reading p.wt-meta { margin: 8px 0; }
+.wtool .wt-reading p.wt-line { font: 500 18px/1.45 var(--serif); }
+.wtool .wt-framing { margin: 12px 0 0; color: var(--muted); font-size: 15px; font-style: italic; }
+.wtool .wt-throws, .wtool .wt-leaves { margin: 8px 0; padding-left: 1.4em; }
+.wtool .wt-throws li, .wtool .wt-leaves li { margin: 8px 0; overflow-wrap: anywhere; }
+.wtool .wt-throws li { list-style-position: outside; }
+.wtool .wt-sticks { display: inline-flex; gap: 4px; margin-right: 10px; vertical-align: middle; }
+.wtool .wt-stick { display: inline-block; width: 8px; height: 26px; border-radius: 4px; border: 1px solid var(--line-strong); }
+.wtool .wt-stick.flat { background: #e9dcc0; border-color: #e9dcc0; }
+.wtool .wt-stick.round { background: #5a4026; border-color: #8b6a43; }
+.wtool .wt-stave { margin: 0 0 6px; padding: 0 0 8px; border-bottom: 1px solid var(--line); }
+.wtool .wt-stave:last-child { border-bottom: 0; }
+.wtool .wt-pic { display: block; max-width: 100%; height: auto; margin: 6px 0; }
+.wtool .wt-stem { stroke: var(--faint); stroke-width: 3; stroke-linecap: round; }
+.wtool .wt-stroke { stroke: var(--gold); stroke-width: 4; stroke-linecap: round; }
+.wtool .wt-cup { fill: rgba(90, 64, 38, .35); stroke: var(--line-strong); stroke-width: 3; }
+.wtool .wt-cup-ring { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.wtool .wt-leaf { fill: var(--gold); stroke: rgba(3, 6, 15, .8); stroke-width: 1.5; }
+.wtool .wt-leaf-n { fill: #0b1020; font: 700 11px/1 var(--sans); }
 @media (min-width: 600px) {
   .wtool { padding: 20px 22px 10px; }
   .wtool .wt-player { grid-template-columns: minmax(0, 1fr) auto auto auto auto; }
