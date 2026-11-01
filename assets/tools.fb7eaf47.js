@@ -14,7 +14,9 @@ function weighted(items, w) { var total = 0, i; for (i = 0; i < items.length; i+
   var r = randInt(total); for (i = 0; i < items.length; i++) { r -= w(items[i]); if (r < 0) return items[i]; } }
 function $(id) { return document.getElementById(id); }
 
-// Browser tools on five guide pages (39.10): name picker, Secret Santa, tournament bracket, bingo caller, scoreboard.
+// Browser tools on eight guide pages: name picker, Secret Santa, tournament bracket, bingo caller, scoreboard (39.10), and
+// truth or dare / would you rather, password and PIN, food picker (39.11). The last three read their data from a script of their
+// own that loads with the page (window.auguraToolData, scripts/site/pages/webtools.py): no request is made by the tool.
 // Every random choice comes from randInt / shuffle (rand.js is placed in front of this file by the build; both use
 // crypto.getRandomValues without modulo bias). Nothing is sent anywhere and nothing is written to browser storage: the state
 // lives in this page until it is closed or reloaded. Text the visitor types goes into the page with textContent only.
@@ -405,14 +407,136 @@ function initScore(root) {
   refreshUndo(); build();
 }
 
+// ---------- 6. truth or dare and would you rather (39.11)
+// A deck is shuffled once and walked through; when every card has been used it is shuffled again, and its first card is never the
+// one just seen. nextCard returns the position of the card in deck.items.
+wt.makeDeck = function (items) { return { items: items, order: [], pos: 0, last: -1 }; };
+wt.nextCard = function (deck) {
+  var n = deck.items.length, i, j, t;
+  if (deck.pos >= deck.order.length) {
+    deck.order = [];
+    for (i = 0; i < n; i++) deck.order.push(i);
+    shuffle(deck.order);
+    if (n > 1 && deck.order[0] === deck.last) { j = 1 + randInt(n - 1); t = deck.order[0]; deck.order[0] = deck.order[j]; deck.order[j] = t; }
+    deck.pos = 0;
+  }
+  deck.last = deck.order[deck.pos++];
+  return deck.last;
+};
+wt.cardsLeft = function (deck) { return deck.order.length - deck.pos; };
+
+function initParty(root, data) {
+  var decks = {}, nouns = { "truth": "Truth", "dare": "Dare", "would-you-rather": "Would you rather" };
+  var card = $("wt-party-card"), kind = $("wt-party-kind"), line = $("wt-party-line"), left = $("wt-party-left");
+  Object.keys(nouns).forEach(function (id) {
+    decks[id] = wt.makeDeck(data[id]);
+    $("wt-party-" + id).addEventListener("click", function () {
+      var d = decks[id], i = wt.nextCard(d);          // chosen first; the display only shows it
+      kind.textContent = nouns[id]; line.textContent = d.items[i]; card.hidden = false;
+      var n = wt.cardsLeft(d);
+      left.textContent = n === 0 ? "That was the last card of this deck: the next press shuffles it again."
+                                 : plural(n, "card", "cards") + " left in this deck before it shuffles again.";
+    });
+  });
+}
+
+// ---------- 7. password, PIN, passphrase, UUID (39.11)
+wt.passphrase = function (words, n) { var out = [], i; for (i = 0; i < n; i++) out.push(words[randInt(words.length)]); return out.join("-"); };
+wt.pin = function (n) { var out = "", i; for (i = 0; i < n; i++) out += String(randInt(10)); return out; };
+wt.password = function (chars, n) { var out = "", i; for (i = 0; i < n; i++) out += chars.charAt(randInt(chars.length)); return out; };
+wt.uuid = function () {                     // version 4: 122 random bits, the version and variant bits are fixed
+  var b = [], i, h = "";
+  for (i = 0; i < 16; i++) b.push(randInt(256));
+  b[6] = 0x40 | (b[6] & 0x0f); b[8] = 0x80 | (b[8] & 0x3f);
+  for (i = 0; i < 16; i++) { h += (b[i] < 16 ? "0" : "") + b[i].toString(16); if (i === 3 || i === 5 || i === 7 || i === 9) h += "-"; }
+  return h;
+};
+wt.codeLength = function (raw, min, max) {  // a whole number from min to max, or null
+  var t = String(raw).trim();
+  if (!/^\d+$/.test(t)) return null;
+  var n = parseInt(t, 10);
+  return n >= min && n <= max ? n : null;
+};
+
+function initCodes(root, data) {
+  var min = intAttr(root, "min"), max = intAttr(root, "max");
+  var lens = { passphrase: intAttr(root, "default-passphrase"), pin: intAttr(root, "default-pin"), password: intAttr(root, "default-password") };
+  var labels = { passphrase: "Number of words", pin: "Number of digits", password: "Number of characters" };
+  var kind = "passphrase", seg = $("wt-code-kind"), btns = seg.querySelectorAll("button"), len = $("wt-code-len"), out = $("wt-code-out");
+  function sync() {
+    for (var i = 0; i < btns.length; i++) btns[i].setAttribute("aria-pressed", String(btns[i].getAttribute("data-v") === kind));
+    $("wt-code-lenrow").hidden = kind === "uuid";
+    if (kind !== "uuid") { $("wt-code-lenlabel").textContent = labels[kind]; len.value = String(lens[kind]); }
+    showError("wt-code-err", "");
+  }
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function () {
+      if (kind !== "uuid") { var keep = wt.codeLength(len.value, min, max); if (keep !== null) lens[kind] = keep; }
+      kind = this.getAttribute("data-v"); sync();
+    });
+  }
+  $("wt-code-go").addEventListener("click", function () {
+    showError("wt-code-err", "");
+    var n = 0;
+    if (kind !== "uuid") {
+      n = wt.codeLength(len.value, min, max);
+      if (n === null) { showError("wt-code-err", "Choose a whole number from " + min + " to " + max + "."); return; }
+      lens[kind] = n;
+    }
+    out.value = kind === "passphrase" ? wt.passphrase(data.words, n) : kind === "pin" ? wt.pin(n) : kind === "password" ? wt.password(data.chars, n) : wt.uuid();
+    out.focus(); out.select();
+  });
+  out.addEventListener("focus", function () { out.select(); });
+  $("wt-code-clear").addEventListener("click", function () { out.value = ""; showError("wt-code-err", ""); });
+  sync();
+}
+
+// ---------- 8. food picker (39.11)
+wt.foodPool = function (items, diets, diet, group) {
+  var allowed = diets[diet] || [];
+  return items.filter(function (f) { return allowed.indexOf(f.group) >= 0 && (group === "all" || f.group === group); });
+};
+wt.pickFood = function (pool, avoidId) {      // every eligible food is equally likely; the previous one is skipped when another is left
+  var eligible = pool.length > 1 ? pool.filter(function (f) { return f.id !== avoidId; }) : pool;
+  return eligible.length ? eligible[randInt(eligible.length)] : null;
+};
+
+function initFood(root, data) {
+  var diet = $("wt-food-diet"), group = $("wt-food-group"), card = $("wt-food-card"), count = $("wt-food-count"), last = "";
+  var label = {};
+  data.groups.forEach(function (g) { label[g[0]] = g[1]; });
+  function pool() { return wt.foodPool(data.items, data.diets, diet.value, group.value); }
+  function refresh() {
+    var p = pool(), dietName = diet.options[diet.selectedIndex].text.toLowerCase();
+    showError("wt-food-err", "");
+    count.textContent = p.length ? "Choosing from " + p.length + " of " + data.items.length + " foods." : "";
+    if (!p.length) showError("wt-food-err", "No food in that category fits a " + dietName + " choice. Choose another category or ingredients.");
+  }
+  diet.addEventListener("change", refresh); group.addEventListener("change", refresh);
+  $("wt-food-go").addEventListener("click", function () {
+    var p = pool(), f;
+    refresh();
+    if (!p.length) { card.hidden = true; return; }
+    f = wt.pickFood(p, last); last = f.id;
+    $("wt-food-name").textContent = f.name; $("wt-food-cat").textContent = "Category: " + label[f.group];
+    card.hidden = false;
+  });
+  refresh();
+}
+
 // ---------- start whatever tool this page has
 (function () {
   var root = document.querySelector("section.wtool[data-wt]");
   if (!root) return;
   var ui = root.querySelector(".wt-ui"), key = root.getAttribute("data-wt");
-  var init = { name: initName, secretSanta: initSanta, bracket: initBracket, bingo: initBingo, scoreboard: initScore }[key];
+  var init = { name: initName, secretSanta: initSanta, bracket: initBracket, bingo: initBingo, scoreboard: initScore,
+               party: initParty, codes: initCodes, food: initFood }[key];
   if (!init || !ui) return;
-  init(root);
+  var data = (window.auguraToolData || {})[key];
+  if (key === "party" || key === "codes" || key === "food") {       // these three need their data script
+    if (!data) { root.insertBefore(elt("p", "wt-err", "This tool's data did not load. Reload the page to try again."), ui); return; }
+  }
+  init(root, data);
   ui.hidden = false;
 })();
 window.auguraTools = wt;      // the pure logic, for scripts/site's browser tests

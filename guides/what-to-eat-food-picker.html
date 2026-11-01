@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27;; img-src &#x27;self&#x27; data:; font-src &#x27;self&#x27;; connect-src &#x27;self&#x27;; manifest-src &#x27;self&#x27;; worker-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;">
+<meta name="referrer" content="no-referrer">
+<title>What to Eat? Random Food Picker | Augura</title>
+<meta name="description" content="Pick one of 27 everyday foods at random in your browser, by diet and category. It names a food, not a meal. The Augura iPhone app has a Food mode too.">
+<link rel="canonical" href="https://augura.fyi/guides/what-to-eat-food-picker.html">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#03050b">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/img/icon-180.png">
+<link rel="stylesheet" href="/assets/site.37b43b58.css">
+<link rel="stylesheet" href="/assets/tools.85a35826.css">
+<script src="/assets/wtdata-food.7e17dba3.js" defer></script>
+<script src="/assets/tools.fb7eaf47.js" defer></script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Augura">
+<meta property="og:title" content="What to Eat? Random Food Picker | Augura">
+<meta property="og:description" content="Pick one of 27 everyday foods at random in your browser, by diet and category. It names a food, not a meal. The Augura iPhone app has a Food mode too.">
+<meta property="og:url" content="https://augura.fyi/guides/what-to-eat-food-picker.html">
+<meta property="og:image" content="https://augura.fyi/img/og/og-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Augura: a calm, private toolbox for chance, with three iPhone screenshots">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://augura.fyi/","name":"Augura","position":1},{"@type":"ListItem","item":"https://augura.fyi/guides/index.html","name":"Guides","position":2},{"@type":"ListItem","item":"https://augura.fyi/guides/what-to-eat-food-picker.html","name":"What to eat? A random food picker","position":3}]}</script>
+<script src="/assets/site.18f15d92.js" defer></script>
+</head>
+<body class="sky" data-page="guide">
+<svg xmlns="http://www.w3.org/2000/svg" class="sprite" aria-hidden="true" focusable="false">
+<symbol id="i-star4" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1.5 14.2 9.8 22.5 12 14.2 14.2 12 22.5 9.8 14.2 1.5 12 9.8 9.8z"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></symbol>
+<symbol id="i-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></symbol>
+<symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11M8 7.2l4-3.7 4 3.7"/><path d="M8 10.5H6.5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H16"/></symbol>
+<symbol id="i-history" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 1 0 2.5-6"/><path d="M3.5 4.5V9H8"/><path d="M12 7.5V12l3 2"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.8"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.8"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.8"/></symbol>
+<symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="8.5" y="8.5" width="11" height="11" rx="2.5"/><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/></symbol>
+<symbol id="i-rock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M5 15.5 7.5 8l5-3 5.5 3.5 2 7-4 4H8.5z"/><path d="M7.5 8l3 4.5 7.5-4M10.5 12.5 8.5 19.5M10.5 12.5l9.5 3" opacity=".55"/></symbol>
+<symbol id="i-paper" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 3.5h8.5L19 8v12.5H6z"/><path d="M14.5 3.5V8H19M9 12h7M9 15.5h7" opacity=".7"/></symbol>
+<symbol id="i-scissors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="6.5" cy="17.5" r="2.8"/><circle cx="17.5" cy="17.5" r="2.8"/><path d="M8.5 15.5 18 4M15.5 15.5 6 4"/></symbol>
+<symbol id="e-heads" viewBox="0 0 100 100"><circle cx="50" cy="50" r="34" fill="none" stroke="currentColor" stroke-width="5"/><path fill="currentColor" d="M60 20 64.6 37.4 82 42 64.6 46.6 60 64 55.4 46.6 38 42 55.4 37.4z"/></symbol>
+<symbol id="e-tails" viewBox="0 0 100 100"><path d="M58 18a33 33 0 1 0 24 48A27 27 0 0 1 58 18z" fill="none" stroke="currentColor" stroke-width="5" stroke-linejoin="round"/><path fill="currentColor" d="M70 30l2 5.5 5.5 2-5.5 2-2 5.5-2-5.5-5.5-2 5.5-2zM82 50l1.3 3.5 3.5 1.3-3.5 1.3L82 59.6l-1.3-3.5-3.5-1.3 3.5-1.3z"/></symbol>
+<symbol id="g-coin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><ellipse cx="12" cy="8.5" rx="8" ry="4.2"/><path d="M4 8.5v6c0 2.3 3.6 4.2 8 4.2s8-1.9 8-4.2v-6"/><path d="M4 11.6c0 2.3 3.6 4.2 8 4.2s8-1.9 8-4.2" opacity=".55"/></symbol>
+<symbol id="g-dice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><g fill="currentColor" stroke="none"><circle cx="8.3" cy="8.3" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="15.7" cy="15.7" r="1.5"/></g></symbol>
+<symbol id="g-yesNo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M8.6 8.6a3.5 3.5 0 1 1 5 3.2c-1 .5-1.6 1.3-1.6 2.4v.6"/><circle cx="12" cy="18.6" r=".7" fill="currentColor"/></symbol>
+<symbol id="g-number" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9.5 4 8 20M16 4l-1.5 16M4.5 9h15M4 15h15"/></symbol>
+<symbol id="g-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 6.5h11M9 12h11M9 17.5h11"/><g fill="currentColor" stroke="none"><circle cx="4.8" cy="6.5" r="1.3"/><circle cx="4.8" cy="12" r="1.3"/><circle cx="4.8" cy="17.5" r="1.3"/></g></symbol>
+<symbol id="g-letter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18 8 6l5 12M4.8 14h6.4"/><path d="M20 18v-5.2a2.6 2.6 0 0 0-4.8-1.3M20 15.4c-.2 1.7-1.4 2.8-2.8 2.8-1.3 0-2.2-.8-2.2-1.9 0-1.4 1.4-2 5-2"/></symbol>
+<symbol id="g-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3.8c3 3.4 6.8 5.7 6.8 9a3.4 3.4 0 0 1-5.6 2.6l1 4.4H9.8l1-4.4a3.4 3.4 0 0 1-5.6-2.6c0-3.3 3.8-5.6 6.8-9z"/></symbol>
+<symbol id="g-rps" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="6.5" cy="17.5" r="2.8"/><circle cx="17.5" cy="17.5" r="2.8"/><path d="M8.5 15.5 18 4M15.5 15.5 6 4"/></symbol>
+<symbol id="g-color" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3.5s6 6.4 6 10.6a6 6 0 0 1-12 0C6 9.9 12 3.5 12 3.5z"/><path d="M9.3 14.6a2.8 2.8 0 0 0 2.4 2.6" stroke-linecap="round" opacity=".6"/></symbol>
+<symbol id="g-date" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/><circle cx="12" cy="14.5" r="1.4" fill="currentColor"/></symbol>
+<symbol id="g-groups" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="8" cy="8.5" r="2.8"/><circle cx="16.5" cy="8.5" r="2.8"/><path d="M3 19c.5-3 2.5-4.6 5-4.6s4.5 1.6 5 4.6M11.6 15.2c1-.6 2.4-.8 4.9-.8 2.5 0 4.5 1.6 5 4.6"/></symbol>
+<symbol id="g-tarot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M14.5 4.2A8 8 0 1 0 19.8 15 6.4 6.4 0 0 1 14.5 4.2z"/><path d="M18 3.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z" fill="currentColor" stroke="none"/></symbol>
+<symbol id="g-iChing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M4 4h16M4 8h6.5M13.5 8H20M4 12h16M4 16h6.5M13.5 16H20M4 20h16"/></symbol>
+<symbol id="g-runes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3.5v17M8 9l7-4.5M8 14.5l7-4.5"/></symbol>
+<symbol id="g-lenormand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="8" y="3.5" width="11" height="15" rx="2.2"/><path d="M5.6 6.8 5 7a2 2 0 0 0-1.2 2.4l3 10.2a2 2 0 0 0 2.4 1.4l4.6-1.3"/></symbol>
+<symbol id="g-omikuji" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="6.5" y="3" width="11" height="18" rx="2"/><path d="M9.5 7.5h5M9.5 11h5M9.5 14.5h3"/></symbol>
+<symbol id="d-song" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17.5V5.5l10-2v12"/><circle cx="6.5" cy="17.5" r="2.5"/><circle cx="16.5" cy="15.5" r="2.5"/></symbol>
+<symbol id="d-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 5.5c2.5-1 5.2-1 8 .8v13c-2.8-1.8-5.5-1.8-8-.8zM20 5.5c-2.5-1-5.2-1-8 .8v13c2.8-1.8 5.5-1.8 8-.8z"/></symbol>
+<symbol id="d-podcast" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="9" y="3.5" width="6" height="10" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5v3"/></symbol>
+<symbol id="d-radio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="2"/><path d="M8.2 8.2a5.4 5.4 0 0 0 0 7.6M15.8 8.2a5.4 5.4 0 0 1 0 7.6M5.3 5.3a9.5 9.5 0 0 0 0 13.4M18.7 5.3a9.5 9.5 0 0 1 0 13.4"/></symbol>
+<symbol id="d-artwork" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3.5a8.5 8.5 0 0 0 0 17c1.3 0 2-1 1.6-2.1-.5-1.3.3-2.4 1.7-2.4h2.2a3 3 0 0 0 3-3 8.5 8.5 0 0 0-8.5-9.5z"/><g fill="currentColor" stroke="none"><circle cx="8" cy="10" r="1.3"/><circle cx="12" cy="7.5" r="1.3"/><circle cx="16" cy="10" r="1.3"/></g></symbol>
+<symbol id="d-space" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M3.5 15.5c2.2 1.6 8.5-.2 13.4-3.8 3.6-2.6 4.6-5 3.6-5.9-.8-.7-2.8-.2-5.2 1"/><path d="M5 5.5l.5 1.4 1.4.5-1.4.5L5 9.3l-.5-1.4-1.4-.5 1.4-.5z" fill="currentColor" stroke="none"/></symbol>
+<symbol id="d-poem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M6.5 7.5h11M6.5 11.5h8M6.5 15.5h10M6.5 19.5h6"/><path d="M5 3.5h14" opacity=".5"/></symbol>
+<symbol id="d-website" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5 13.6 13.6 8.5 15.5 10.4 10.4z"/></symbol>
+<symbol id="d-youtube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="3.5"/><path d="M10.2 9.3v5.4l4.6-2.7z" fill="currentColor"/></symbol>
+</svg>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+<div class="wrap top-in">
+<a class="brand" href="/"><img src="/img/icon-64.png" width="28" height="28" alt=""><span>Augura</span></a>
+<nav class="nav" aria-label="Main"><a href="/app.html">Web app</a><a href="/meanings/index.html">Meanings</a></nav>
+
+<a class="pill" href="/#get-the-app">Get the app</a>
+</div>
+</header>
+
+<div class="lbanner" id="lbanner" hidden>
+<div class="wrap"><p></p><a class="btn ghost sm" href="/">Read in English</a><button type="button" class="round x" aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button></div>
+</div>
+
+<main id="main" class="page">
+<p class="back"><a href="/">← Augura</a> · <a href="/guides/index.html">All guides</a></p>
+<article class="guide prose">
+<h1>What to eat? A random food picker</h1>
+<p class="lead">Pick one random everyday food in your browser, and see how the iPhone app&#x27;s Food mode adds short, sourced nutrition context. This page has a free browser tool at the top and a guide to the Food mode in the Augura iPhone app (coming soon to the App Store). The browser tool is simpler than the app mode: there is no web version of the full mode.</p>
+<h2>Pick a food at random</h2>
+<section class="wtool" id="wt-food" data-wt="food" role="group" aria-label="Random food picker">
+<p>Not sure what to eat? Choose which ingredients you eat, optionally one category, and press Pick a food. It names one food from a list of 27, not a meal or a recipe.</p>
+<noscript><p class="wt-nojs">This tool needs JavaScript, which is switched off in this browser.</p></noscript>
+<div class="wt-ui" hidden>
+<div class="wt-row"><label for="wt-food-diet">Ingredients</label><select id="wt-food-diet"><option value="vegan">Vegan</option><option value="vegetarian">Vegetarian</option><option value="pescatarian">Pescatarian</option><option value="omnivore" selected>Omnivore</option></select></div>
+<div class="wt-row"><label for="wt-food-group">Category</label><select id="wt-food-group"><option value="all">Any category</option><option value="fruit">Fruit</option><option value="vegetable">Vegetable</option><option value="grain">Grain</option><option value="legume">Legume</option><option value="nuts">Nuts and seeds</option><option value="dairy">Dairy</option><option value="egg">Egg</option><option value="fish">Fish</option><option value="meat">Meat</option></select></div>
+<div class="wt-row"><button type="button" class="btn" id="wt-food-go">Pick a food</button></div>
+<p class="wt-err" id="wt-food-err" role="alert"></p>
+<div class="wt-card" id="wt-food-card" role="status" aria-live="polite" hidden>
+<p class="wt-big" id="wt-food-name"></p>
+<p class="wt-meta" id="wt-food-cat"></p>
+</div>
+<p class="wt-meta" id="wt-food-count"></p>
+</div>
+<h3>What this tool does</h3>
+<ul><li>The list has 27 everyday foods, each in one of nine categories (fruit, vegetable, grain, legume, nuts and seeds, dairy, egg, fish, meat). Each eligible food is equally likely, and when more than one is left the food you just got is skipped.</li><li>The diet choice only sorts the categories: vegan has no dairy, egg, fish or meat; vegetarian adds dairy and egg; pescatarian adds fish; omnivore adds meat. It does not check recipes, packaged foods, allergies or medical needs, so it is not an allergy or safety check.</li><li>It names a food, not a meal or a recipe, and shows nothing about nutrition or health. It is no diet plan.</li><li>The foods are the list the Augura iPhone app uses, taken from U.S. government MyPlate food lists (myplate.gov).</li><li>Everything runs in this page on your device with the browser&#x27;s secure random generator. No request is sent after the page loads, no account is needed and nothing is saved: closing or reloading the tab clears it.</li></ul>
+</section>
+<h2>What it is</h2>
+<p>Food draws one entry from a small offline catalogue of ordinary food ingredients. Fruit is one of its categories. Each card names the food, describes a relevant food group or nutrient role and links to the sources. These are educational summaries, not predictions about an individual person.</p>
+<h2>How to use it</h2>
+<ol><li><strong>Choose a diet.</strong> In Options, choose vegan, vegetarian, pescatarian or omnivore ingredients. Narrow to Fruit or another category if you wish.</li><li><strong>Explore a food.</strong> Draw one food and read its short nutrition context. Sources explain the general nutrient role; portions, preparation and individual needs vary.</li><li><strong>Keep the same result.</strong> Open the sources or inspect a photograph without drawing again. History keeps the displayed food and summary; the next draw remains your choice.</li></ol>
+<p>Options offers vegan, vegetarian, pescatarian and omnivore ingredient filters, plus a food category. Vegetarian includes dairy and eggs; pescatarian also includes fish. Recipes, packaged foods, allergies and medical needs can differ, so these filters are not a safety certification. Plant-ingredient bread excludes animal ingredients.</p>
+<h2>The 27 foods</h2>
+<table class="facts-table">
+<thead><tr><th scope="col">Category</th><th scope="col">Foods</th></tr></thead>
+<tbody><tr><td>Fruit</td><td>Banana, Orange, Peach, Pineapple</td></tr><tr><td>Vegetable</td><td>Broccoli, Spinach, Green beans, Carrot, Potato, Onion, Celery</td></tr><tr><td>Grain</td><td>Oatmeal, Popcorn, Brown rice, Whole wheat bread (plant ingredients)</td></tr><tr><td>Legume</td><td>Pinto beans, White beans, Plain tofu</td></tr><tr><td>Nuts and seeds</td><td>Plain peanut butter</td></tr><tr><td>Dairy</td><td>Milk, Plain yogurt (without gelatin)</td></tr><tr><td>Egg</td><td>Egg</td></tr><tr><td>Fish</td><td>Tuna, Salmon, Sardines</td></tr><tr><td>Meat</td><td>Pork, Chicken breast</td></tr></tbody>
+</table>
+<p>27 foods in all. The app and the browser tool above draw from this same list.</p>
+<h2>How the draw works</h2>
+<p>Each eligible entry is equally likely, with the immediately previous entry set aside when another choice exists. Tap the draw button or shake the phone. History stores the displayed food, category, summary and source links. Reopening or sharing an entry does not draw again.</p>
+<h2>Where it comes from</h2>
+<p>The foods and their categories are the list the app carries offline. Each entry comes from a U.S. government MyPlate food list (myplate.gov), and the short nutrition notes the app shows next to each food are Augura&#x27;s own wording of USDA, NIH and MedlinePlus material. The browser tool shows only the name and the category.</p>
+<p>When a matching, reviewed plant photograph is available, its scientific name identifies the plant; it is not a photograph of a prepared meal. Optional photographs can need the existing Apple photo pack. Tap an available photograph for a full-screen view; compact credits open source and licence details. Nutrition context is independently worded from the linked USDA, NIH and MedlinePlus material.</p>
+<h2>What it cannot do</h2>
+<ul><li>It does not plan a meal, suggest a recipe or know what is in your kitchen. It names one ingredient to start from.</li><li>It is not dietary, medical or allergy advice. The diet filters only sort the categories, and recipes, packaged foods and your own needs can differ.</li><li>It does not count calories or portions, and the browser tool shows no nutrition information at all.</li><li>The list is small and everyday: 27 foods, not restaurants, cuisines or dishes.</li></ul>
+<h2>Related</h2>
+<ul><li><a href="/decision-wheel.html">Decision wheel: choose from your own list of dishes</a></li><li><a href="/random-number.html">Random number: any range, one number</a></li><li><a href="/guides/index.html">All guides to what Augura can do</a></li></ul>
+</article>
+<aside class="appcard" aria-labelledby="appcard-h">
+<img src="/img/icon-128.png" width="56" height="56" alt="">
+<h2 class="h" id="appcard-h">Augura for iPhone</h2>
+<p>All of these plus 20 oracle traditions, party games, widgets, Control Center and Apple Watch.</p>
+<div class="store"><a class="badge b40" href="https://apps.apple.com/app/id6818135492" rel="noopener"><img src="/img/badges/en.svg" alt="Download on the App Store" width="120" height="40"></a>
+<span class="soon">Coming soon</span></div>
+</aside>
+
+</main>
+
+<footer class="foot">
+<div class="wrap">
+<div class="foot-cols">
+<div>
+<a class="brand" href="/"><img src="/img/icon-64.png" width="28" height="28" alt=""><span>Augura</span></a>
+<p>A calm, private toolbox for chance. Made by Luca.</p>
+</div>
+<div>
+<h2>Augura</h2>
+<ul>
+<li><a href="/app.html">Web app</a></li>
+<li><a href="/tools.html">Free tools</a></li>
+<li><a href="/meanings/index.html">Meanings</a></li>
+<li><a href="/press.html">Press kit</a></li>
+<li><a href="/privacy.html" hreflang="en">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h2>Support</h2>
+<ul><li><a href="mailto:support@augura.fyi">support@augura.fyi</a></li></ul>
+
+</div>
+</div>
+<div class="legal"><p>No cookies, no analytics, no third-party requests.</p><p lang="en">Apple, the Apple logo, iPhone, Apple Watch, and Siri are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc.</p></div>
+</div>
+</footer>
+
+
+</body>
+</html>

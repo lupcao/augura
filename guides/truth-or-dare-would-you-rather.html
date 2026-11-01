@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27;; img-src &#x27;self&#x27; data:; font-src &#x27;self&#x27;; connect-src &#x27;self&#x27;; manifest-src &#x27;self&#x27;; worker-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;">
 <meta name="referrer" content="no-referrer">
 <title>Truth or Dare and Would You Rather Questions | Augura</title>
-<meta name="description" content="What the Augura iPhone app&#x27;s Party mode holds: family-friendly truth or dare, would-you-rather, icebreaker, charades and drawing prompts, plus story dice.">
+<meta name="description" content="Draw a family-friendly truth, dare or would-you-rather question in your browser, and see what the Augura iPhone app&#x27;s Party mode holds.">
 <link rel="canonical" href="https://augura.fyi/guides/truth-or-dare-would-you-rather.html">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#03050b">
@@ -14,10 +14,13 @@
 <link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/img/icon-180.png">
 <link rel="stylesheet" href="/assets/site.37b43b58.css">
+<link rel="stylesheet" href="/assets/tools.85a35826.css">
+<script src="/assets/wtdata-party.62eba1a3.js" defer></script>
+<script src="/assets/tools.fb7eaf47.js" defer></script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Augura">
 <meta property="og:title" content="Truth or Dare and Would You Rather Questions | Augura">
-<meta property="og:description" content="What the Augura iPhone app&#x27;s Party mode holds: family-friendly truth or dare, would-you-rather, icebreaker, charades and drawing prompts, plus story dice.">
+<meta property="og:description" content="Draw a family-friendly truth, dare or would-you-rather question in your browser, and see what the Augura iPhone app&#x27;s Party mode holds.">
 <meta property="og:url" content="https://augura.fyi/guides/truth-or-dare-would-you-rather.html">
 <meta property="og:image" content="https://augura.fyi/img/og/og-en.jpg">
 <meta property="og:image:width" content="1200">
@@ -25,7 +28,7 @@
 <meta property="og:image:alt" content="Augura: a calm, private toolbox for chance, with three iPhone screenshots">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://augura.fyi/","name":"Augura","position":1},{"@type":"ListItem","item":"https://augura.fyi/guides/index.html","name":"Guides","position":2},{"@type":"ListItem","item":"https://augura.fyi/guides/truth-or-dare-would-you-rather.html","name":"Truth or dare and would-you-rather questions in the Augura app","position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://augura.fyi/","name":"Augura","position":1},{"@type":"ListItem","item":"https://augura.fyi/guides/index.html","name":"Guides","position":2},{"@type":"ListItem","item":"https://augura.fyi/guides/truth-or-dare-would-you-rather.html","name":"Truth or dare and would-you-rather questions","position":3}]}</script>
 <script src="/assets/site.18f15d92.js" defer></script>
 </head>
 <body class="sky" data-page="guide">
@@ -89,8 +92,23 @@
 <main id="main" class="page">
 <p class="back"><a href="/">← Augura</a> · <a href="/guides/index.html">All guides</a></p>
 <article class="guide prose">
-<h1>Truth or dare and would-you-rather questions in the Augura app</h1>
-<p class="lead">Family-friendly prompts, charades, drawing words, and story dice for people together. This page is a guide to the Party mode in the Augura iPhone app (coming soon to the App Store). There is no web version of this mode.</p>
+<h1>Truth or dare and would-you-rather questions</h1>
+<p class="lead">Family-friendly truth or dare and would-you-rather questions to draw in your browser, plus charades, drawing words and story dice in the iPhone app. This page has a free browser tool at the top and a guide to the Party mode in the Augura iPhone app (coming soon to the App Store). The browser tool is simpler than the app mode: there is no web version of the full mode.</p>
+<h2>Draw a truth, a dare or a would-you-rather</h2>
+<section class="wtool" id="wt-party" data-wt="party" role="group" aria-label="Truth or dare and would you rather">
+<p>Press Truth, Dare or Would you rather to draw one card. Everything here is meant for people in the same room.</p>
+<noscript><p class="wt-nojs">This tool needs JavaScript, which is switched off in this browser.</p></noscript>
+<div class="wt-ui" hidden>
+<div class="wt-row" role="group" aria-label="Which card to draw"><button type="button" class="btn" id="wt-party-truth" data-deck="truth">Truth</button><button type="button" class="btn" id="wt-party-dare" data-deck="dare">Dare</button><button type="button" class="btn" id="wt-party-would-you-rather" data-deck="would-you-rather">Would you rather</button></div>
+<div class="wt-card" id="wt-party-card" role="status" aria-live="polite" hidden>
+<p class="wt-kind" id="wt-party-kind"></p>
+<p class="wt-big" id="wt-party-line"></p>
+</div>
+<p class="wt-meta" id="wt-party-left"></p>
+</div>
+<h3>What this tool does</h3>
+<ul><li>The decks are the family-friendly starting decks of the app&#x27;s Party mode: 150 truths, 150 dares and 300 would-you-rather questions. The optional packs, such as couples&#x27; questions, are not here.</li><li>Each press draws one card from the deck you chose. A card does not come back until every card of that deck has been used; then the deck is shuffled again, and its first card is never the one you just saw.</li><li>Anyone can pass or ask for another card. Choose what suits the people in the room.</li><li>Everything runs in this page on your device with the browser&#x27;s secure random generator. No request is sent after the page loads, no account is needed and nothing is saved: closing or reloading the tab clears it.</li></ul>
+</section>
 <h2>What it is</h2>
 <table class="facts-table">
 <thead><tr><th scope="col">Deck</th><th scope="col">What is in it</th></tr></thead>
@@ -111,9 +129,9 @@
 <h2>Packs and reset</h2>
 <p>The gear sheet lets you switch individual packs on or off, including couples’ questions and drawing, writing, photo, and conversation prompts. Reset party packs restores the supplied family-friendly starting packs. It never enables a future adult pack.</p>
 <h2>Where it comes from</h2>
-<p>The prompts are the decks supplied with the app, listed above. The story-dice pictures are picked with the system random generator before the dice tumble.</p>
+<p>The prompts are the decks supplied with the app, listed above; the browser tool above uses the truth, dare and would-you-rather decks of them. The story-dice pictures are picked with the system random generator before the dice tumble.</p>
 <h2>What it cannot do</h2>
-<ul><li>It is not an adult or 18+ question generator. The starting decks are family-friendly, and the optional packs, such as couples&#x27; questions, are off until you switch them on.</li><li>Story dice have no right answer and no scoring: they are a starting point for a story.</li><li>It cannot know who is in the room. Choose prompts that suit the people present: anyone can pass, change a prompt or stop playing.</li></ul>
+<ul><li>It is not an adult or 18+ question generator. The starting decks are family-friendly, and the optional packs, such as couples&#x27; questions, are off until you switch them on.</li><li>The browser tool has the three decks only: no icebreakers, charades, drawing words or story dice, which are in the app.</li><li>Story dice have no right answer and no scoring: they are a starting point for a story.</li><li>It cannot know who is in the room. Choose prompts that suit the people present: anyone can pass, change a prompt or stop playing.</li></ul>
 <h2>Related</h2>
 <ul><li><a href="/team-generator.html">Team generator: split the group into teams</a></li><li><a href="/dice-roller.html">Dice roller: d6, d20 and more</a></li><li><a href="/guides/index.html">All guides to what Augura can do</a></li></ul>
 </article>
