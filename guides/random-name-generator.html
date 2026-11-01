@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta http-equiv="Content-Security-Policy" content="default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27;; img-src &#x27;self&#x27; data:; font-src &#x27;self&#x27;; connect-src &#x27;self&#x27;; manifest-src &#x27;self&#x27;; worker-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;">
 <meta name="referrer" content="no-referrer">
-<title>Random Name Generator – Country and Fantasy Names | Augura</title>
-<meta name="description" content="How the Augura iPhone app draws one to ten random first, last or full names from seven countries or from fantasy, sci-fi and place-name sets.">
+<title>Random Name Picker and Name Generator | Augura</title>
+<meta name="description" content="Pick random names from your own list in the browser, and see how the Augura iPhone app draws names from seven countries or fantasy sets.">
 <link rel="canonical" href="https://augura.fyi/guides/random-name-generator.html">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#03050b">
@@ -14,10 +14,12 @@
 <link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/img/icon-180.png">
 <link rel="stylesheet" href="/assets/site.37b43b58.css">
+<link rel="stylesheet" href="/assets/tools.15515845.css">
+<script src="/assets/tools.d8e04866.js" defer></script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Augura">
-<meta property="og:title" content="Random Name Generator – Country and Fantasy Names | Augura">
-<meta property="og:description" content="How the Augura iPhone app draws one to ten random first, last or full names from seven countries or from fantasy, sci-fi and place-name sets.">
+<meta property="og:title" content="Random Name Picker and Name Generator | Augura">
+<meta property="og:description" content="Pick random names from your own list in the browser, and see how the Augura iPhone app draws names from seven countries or fantasy sets.">
 <meta property="og:url" content="https://augura.fyi/guides/random-name-generator.html">
 <meta property="og:image" content="https://augura.fyi/img/og/og-en.jpg">
 <meta property="og:image:width" content="1200">
@@ -25,7 +27,7 @@
 <meta property="og:image:alt" content="Augura: a calm, private toolbox for chance, with three iPhone screenshots">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://augura.fyi/","name":"Augura","position":1},{"@type":"ListItem","item":"https://augura.fyi/guides/index.html","name":"Guides","position":2},{"@type":"ListItem","item":"https://augura.fyi/guides/random-name-generator.html","name":"Random name generator in the Augura app","position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://augura.fyi/","name":"Augura","position":1},{"@type":"ListItem","item":"https://augura.fyi/guides/index.html","name":"Guides","position":2},{"@type":"ListItem","item":"https://augura.fyi/guides/random-name-generator.html","name":"Random name picker and name generator","position":3}]}</script>
 <script src="/assets/site.18f15d92.js" defer></script>
 </head>
 <body class="sky" data-page="guide">
@@ -89,8 +91,27 @@
 <main id="main" class="page">
 <p class="back"><a href="/">← Augura</a> · <a href="/guides/index.html">All guides</a></p>
 <article class="guide prose">
-<h1>Random name generator in the Augura app</h1>
-<p class="lead">Draw one to ten random first, last or full names from seven countries or from made-up fantasy, sci-fi and place-name sets. This page is a guide to the Name mode in the Augura iPhone app (coming soon to the App Store). There is no web version of this mode.</p>
+<h1>Random name picker and name generator</h1>
+<p class="lead">Draw one to ten random first, last or full names from seven countries or from made-up fantasy, sci-fi and place-name sets. This page has a free browser tool at the top and a guide to the Name mode in the Augura iPhone app (coming soon to the App Store). The browser tool is simpler than the app mode: there is no web version of the full mode.</p>
+<h2>Pick names from your own list</h2>
+<section class="wtool" id="wt-name" data-wt="name" data-len="80" data-max="200" role="group" aria-label="Random name picker">
+<p>Type or paste names, one per line, choose how many to pick and press Pick. This browser tool picks from your list: it does not invent names (the app&#x27;s Name mode, described further down, does that).</p>
+<noscript><p class="wt-nojs">This tool needs JavaScript, which is switched off in this browser.</p></noscript>
+<div class="wt-ui" hidden>
+<label for="wt-name-list">Names, one per line</label>
+<textarea id="wt-name-list" rows="6" spellcheck="false" autocomplete="off" autocapitalize="off">Player 1
+Player 2
+Player 3
+Player 4
+Player 5
+Player 6</textarea>
+<div class="wt-row"><label for="wt-name-k">How many to pick</label><input id="wt-name-k" type="number" inputmode="numeric" min="1" step="1" value="1"><button type="button" class="btn" id="wt-name-go">Pick</button></div>
+<p class="wt-err" id="wt-name-err" role="alert"></p>
+<div class="wt-result" id="wt-name-out" role="status" aria-live="polite"></div>
+</div>
+<h3>What this tool does</h3>
+<ul><li>Every line has the same chance, a line is never picked twice in one go, and the names are shown in the order they were drawn. A name you type twice counts as two lines.</li><li>Up to 200 names of up to 80 characters each. Blank lines are ignored.</li><li>Everything runs in this page on your device with the browser&#x27;s secure random generator. No request is sent after the page loads, no account is needed and nothing is saved: closing or reloading the tab clears it.</li></ul>
+</section>
 <h2>What it is</h2>
 <p>Name picks random names from lists of common names. There is a list for the United States, the United Kingdom, Germany, Italy, France, Spain and Japan, each with about a hundred first names (female, male and unisex) and about a hundred family names. Japanese names are written family name first, in Latin letters.</p>
 <p>Three made-up sets build names from syllables instead of lists: Fantasy (Aelwen Stormblade), Sci-fi (Zarix Vortek) and Place names (Oakford, Silverbury). The made-up sets can give a name nobody has used before, but one may also look a little like a real word.</p>
@@ -109,7 +130,7 @@
 <h2>Where it comes from</h2>
 <p>The country lists are a sample of common first and family names that ship inside the app; they are not complete. The three made-up sets are built from syllables by the app.</p>
 <h2>What it cannot do</h2>
-<ul><li>It is not built as a baby-name, company-name or username tool: it draws from fixed lists and syllable sets.</li><li>It does not say how common a name is. Every entry in a list has the same chance.</li><li>A made-up name can look like a real word or a real person. Check it before you use it for anything important.</li><li>It does not pick from names you type yourself. For that, use the decision wheel.</li></ul>
+<ul><li>It is not built as a baby-name, company-name or username tool: it draws from fixed lists and syllable sets.</li><li>It does not say how common a name is. Every entry in a list has the same chance.</li><li>A made-up name can look like a real word or a real person. Check it before you use it for anything important.</li><li>The app&#x27;s Name mode does not pick from names you type yourself. The browser tool at the top of this page does, and so does the decision wheel.</li></ul>
 <h2>Related</h2>
 <ul><li><a href="/decision-wheel.html">Decision wheel: pick from names you type</a></li><li><a href="/team-generator.html">Team generator: split names into teams</a></li><li><a href="/guides/index.html">All guides to what Augura can do</a></li></ul>
 </article>

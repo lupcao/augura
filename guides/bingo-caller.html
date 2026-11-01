@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27;; img-src &#x27;self&#x27; data:; font-src &#x27;self&#x27;; connect-src &#x27;self&#x27;; manifest-src &#x27;self&#x27;; worker-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;">
 <meta name="referrer" content="no-referrer">
 <title>Bingo Caller – Random Bingo Number Generator | Augura</title>
-<meta name="description" content="How the Augura iPhone app calls bingo numbers one at a time from a 75-ball or 90-ball pool, with a board of called numbers. No cards, no prizes.">
+<meta name="description" content="Call bingo numbers in your browser from a 75- or 90-ball pool, one at a time, with a board of calls. No cards, no prizes, no account.">
 <link rel="canonical" href="https://augura.fyi/guides/bingo-caller.html">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#03050b">
@@ -14,10 +14,12 @@
 <link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/img/icon-180.png">
 <link rel="stylesheet" href="/assets/site.37b43b58.css">
+<link rel="stylesheet" href="/assets/tools.15515845.css">
+<script src="/assets/tools.d8e04866.js" defer></script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Augura">
 <meta property="og:title" content="Bingo Caller – Random Bingo Number Generator | Augura">
-<meta property="og:description" content="How the Augura iPhone app calls bingo numbers one at a time from a 75-ball or 90-ball pool, with a board of called numbers. No cards, no prizes.">
+<meta property="og:description" content="Call bingo numbers in your browser from a 75- or 90-ball pool, one at a time, with a board of calls. No cards, no prizes, no account.">
 <meta property="og:url" content="https://augura.fyi/guides/bingo-caller.html">
 <meta property="og:image" content="https://augura.fyi/img/og/og-en.jpg">
 <meta property="og:image:width" content="1200">
@@ -25,7 +27,7 @@
 <meta property="og:image:alt" content="Augura: a calm, private toolbox for chance, with three iPhone screenshots">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://augura.fyi/","name":"Augura","position":1},{"@type":"ListItem","item":"https://augura.fyi/guides/index.html","name":"Guides","position":2},{"@type":"ListItem","item":"https://augura.fyi/guides/bingo-caller.html","name":"Bingo caller in the Augura app","position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://augura.fyi/","name":"Augura","position":1},{"@type":"ListItem","item":"https://augura.fyi/guides/index.html","name":"Guides","position":2},{"@type":"ListItem","item":"https://augura.fyi/guides/bingo-caller.html","name":"Bingo caller","position":3}]}</script>
 <script src="/assets/site.18f15d92.js" defer></script>
 </head>
 <body class="sky" data-page="guide">
@@ -89,8 +91,23 @@
 <main id="main" class="page">
 <p class="back"><a href="/">← Augura</a> · <a href="/guides/index.html">All guides</a></p>
 <article class="guide prose">
-<h1>Bingo caller in the Augura app</h1>
-<p class="lead">Call every ball once from a 75- or 90-ball pool for a local bingo game. This page is a guide to the Bingo caller mode in the Augura iPhone app (coming soon to the App Store). There is no web version of this mode.</p>
+<h1>Bingo caller</h1>
+<p class="lead">Call every ball once from a 75- or 90-ball pool for a local bingo game. This page has a free browser tool at the top and a guide to the Bingo caller mode in the Augura iPhone app (coming soon to the App Store). The browser tool is simpler than the app mode: there is no web version of the full mode.</p>
+<h2>Call bingo numbers here</h2>
+<section class="wtool" id="wt-bingo" data-wt="bingo" data-pools="75,90" role="group" aria-label="Bingo caller">
+<p>Choose 75 or 90 balls and press Call next ball. Each number is called once, and the board marks every call.</p>
+<noscript><p class="wt-nojs">This tool needs JavaScript, which is switched off in this browser.</p></noscript>
+<div class="wt-ui" hidden>
+<div class="wt-seg" role="group" aria-label="Number of balls" id="wt-bingo-pool"><button type="button" data-v="75" aria-pressed="true">75 balls</button><button type="button" data-v="90" aria-pressed="false">90 balls</button></div>
+<div class="wt-row"><button type="button" class="btn" id="wt-bingo-go">Call next ball</button><button type="button" class="btn ghost" id="wt-bingo-new">New game</button></div>
+<p class="wt-ball" id="wt-bingo-last" role="status" aria-live="polite" aria-atomic="true">Press Call next ball</p>
+<p class="wt-meta" id="wt-bingo-count"></p>
+<p class="wt-meta" id="wt-bingo-recent"></p>
+<ol class="wt-board" id="wt-bingo-board" aria-label="Board of numbers"></ol>
+</div>
+<h3>What this tool does</h3>
+<ul><li>With 75 balls each call also shows its letter: B 1 to 15, I 16 to 30, N 31 to 45, G 46 to 60, O 61 to 75. The pool is fixed from the first call until you start a new game.</li><li>After the last number the caller stops. New game asks you to press it twice, so a stray tap cannot clear the board.</li><li>It makes no cards, does not check for a winner and does not speak aloud; a screen reader announces each new call.</li><li>Everything runs in this page on your device with the browser&#x27;s secure random generator. No request is sent after the page loads, no account is needed and nothing is saved: closing or reloading the tab clears it.</li></ul>
+</section>
 <h2>What it is</h2>
 <p>Choose 75 balls or 90 balls before the first call. The caller uses the usual numbered pools, but it does not make cards or check a winner.</p>
 <h2>How to use it</h2>

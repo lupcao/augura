@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27;; img-src &#x27;self&#x27; data:; font-src &#x27;self&#x27;; connect-src &#x27;self&#x27;; manifest-src &#x27;self&#x27;; worker-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;">
 <meta name="referrer" content="no-referrer">
 <title>Score Keeper – Scoreboard for Game Night | Augura</title>
-<meta name="description" content="How the Augura iPhone app keeps score for two to eight players with +1, +5, −1, Undo, a random first player and a turn timer. Scores stay on the phone.">
+<meta name="description" content="Keep score for two to eight players in your browser with +1, +5, −1, Undo and a random first player. The iPhone app adds a turn timer.">
 <link rel="canonical" href="https://augura.fyi/guides/score-keeper.html">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#03050b">
@@ -14,10 +14,12 @@
 <link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/img/icon-180.png">
 <link rel="stylesheet" href="/assets/site.37b43b58.css">
+<link rel="stylesheet" href="/assets/tools.15515845.css">
+<script src="/assets/tools.d8e04866.js" defer></script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Augura">
 <meta property="og:title" content="Score Keeper – Scoreboard for Game Night | Augura">
-<meta property="og:description" content="How the Augura iPhone app keeps score for two to eight players with +1, +5, −1, Undo, a random first player and a turn timer. Scores stay on the phone.">
+<meta property="og:description" content="Keep score for two to eight players in your browser with +1, +5, −1, Undo and a random first player. The iPhone app adds a turn timer.">
 <meta property="og:url" content="https://augura.fyi/guides/score-keeper.html">
 <meta property="og:image" content="https://augura.fyi/img/og/og-en.jpg">
 <meta property="og:image:width" content="1200">
@@ -25,7 +27,7 @@
 <meta property="og:image:alt" content="Augura: a calm, private toolbox for chance, with three iPhone screenshots">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://augura.fyi/","name":"Augura","position":1},{"@type":"ListItem","item":"https://augura.fyi/guides/index.html","name":"Guides","position":2},{"@type":"ListItem","item":"https://augura.fyi/guides/score-keeper.html","name":"Score keeper for game night in the Augura app","position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://augura.fyi/","name":"Augura","position":1},{"@type":"ListItem","item":"https://augura.fyi/guides/index.html","name":"Guides","position":2},{"@type":"ListItem","item":"https://augura.fyi/guides/score-keeper.html","name":"Score keeper for game night","position":3}]}</script>
 <script src="/assets/site.18f15d92.js" defer></script>
 </head>
 <body class="sky" data-page="guide">
@@ -89,8 +91,21 @@
 <main id="main" class="page">
 <p class="back"><a href="/">← Augura</a> · <a href="/guides/index.html">All guides</a></p>
 <article class="guide prose">
-<h1>Score keeper for game night in the Augura app</h1>
-<p class="lead">Keep score for any game with big +1, +5 and −1 buttons, Undo, a random first player and a turn timer that moves round the table. This page is a guide to the Scoreboard mode in the Augura iPhone app (coming soon to the App Store). There is no web version of this mode.</p>
+<h1>Score keeper for game night</h1>
+<p class="lead">Keep score for any game with big +1, +5 and −1 buttons, Undo, a random first player and a turn timer that moves round the table. This page has a free browser tool at the top and a guide to the Scoreboard mode in the Augura iPhone app (coming soon to the App Store). The browser tool is simpler than the app mode: there is no web version of the full mode.</p>
+<h2>Keep score here</h2>
+<section class="wtool" id="wt-scoreboard" data-wt="scoreboard" data-max="8" data-min="2" data-undo="50" role="group" aria-label="Score keeper">
+<p>Choose 2 to 8 players, type their names and press +1, +5 or −1 next to a name.</p>
+<noscript><p class="wt-nojs">This tool needs JavaScript, which is switched off in this browser.</p></noscript>
+<div class="wt-ui" hidden>
+<div class="wt-row"><span id="wt-score-pl-label">Players</span><span class="wt-step" role="group" aria-labelledby="wt-score-pl-label"><button type="button" id="wt-score-minus" aria-label="One player fewer">&minus;</button><output id="wt-score-n">4</output><button type="button" id="wt-score-plus" aria-label="One player more">+</button></span></div>
+<ul class="wt-players" id="wt-score-list"></ul>
+<div class="wt-row"><button type="button" class="btn ghost sm" id="wt-score-undo">Undo</button><button type="button" class="btn ghost sm" id="wt-score-first-go">Random first player</button><button type="button" class="btn ghost sm" id="wt-score-reset">Reset scores</button></div>
+<p class="wt-meta" id="wt-score-first" role="status" aria-live="polite"></p>
+</div>
+<h3>What this tool does</h3>
+<ul><li>Undo takes back the last 50 changes. Random first player picks one of the players with equal chance. Reset scores sets everyone back to zero (Undo can bring the scores back).</li><li>There is no turn timer in the browser version (the app has one), and scores are not shared between devices.</li><li>Scores are for fun and are not about money, bets or prizes.</li><li>Everything runs in this page on your device with the browser&#x27;s secure random generator. No request is sent after the page loads, no account is needed and nothing is saved: closing or reloading the tab clears it.</li></ul>
+</section>
 <h2>What it is</h2>
 <p>A scoreboard for board games, card games, quizzes and backyard games. It works for two to eight players, needs no account and keeps your scores on this phone, even after you close the app.</p>
 <h2>How to use it</h2>

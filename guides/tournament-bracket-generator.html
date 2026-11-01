@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27;; img-src &#x27;self&#x27; data:; font-src &#x27;self&#x27;; connect-src &#x27;self&#x27;; manifest-src &#x27;self&#x27;; worker-src &#x27;self&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;">
 <meta name="referrer" content="no-referrer">
 <title>Tournament Bracket Generator – Single or Double Elimination | Augura</title>
-<meta name="description" content="How the Augura iPhone app seeds a tournament bracket at random for 2 to 32 players, single or double elimination, and keeps it saved while you tap winners.">
+<meta name="description" content="Make a single-elimination bracket for 2 to 32 names in your browser, seeded at random. The iPhone app also does double elimination.">
 <link rel="canonical" href="https://augura.fyi/guides/tournament-bracket-generator.html">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#03050b">
@@ -14,10 +14,12 @@
 <link rel="icon" type="image/png" href="/img/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/img/icon-180.png">
 <link rel="stylesheet" href="/assets/site.37b43b58.css">
+<link rel="stylesheet" href="/assets/tools.15515845.css">
+<script src="/assets/tools.d8e04866.js" defer></script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Augura">
 <meta property="og:title" content="Tournament Bracket Generator – Single or Double Elimination | Augura">
-<meta property="og:description" content="How the Augura iPhone app seeds a tournament bracket at random for 2 to 32 players, single or double elimination, and keeps it saved while you tap winners.">
+<meta property="og:description" content="Make a single-elimination bracket for 2 to 32 names in your browser, seeded at random. The iPhone app also does double elimination.">
 <meta property="og:url" content="https://augura.fyi/guides/tournament-bracket-generator.html">
 <meta property="og:image" content="https://augura.fyi/img/og/og-en.jpg">
 <meta property="og:image:width" content="1200">
@@ -25,7 +27,7 @@
 <meta property="og:image:alt" content="Augura: a calm, private toolbox for chance, with three iPhone screenshots">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://augura.fyi/","name":"Augura","position":1},{"@type":"ListItem","item":"https://augura.fyi/guides/index.html","name":"Guides","position":2},{"@type":"ListItem","item":"https://augura.fyi/guides/tournament-bracket-generator.html","name":"Tournament bracket generator in the Augura app","position":3}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://augura.fyi/","name":"Augura","position":1},{"@type":"ListItem","item":"https://augura.fyi/guides/index.html","name":"Guides","position":2},{"@type":"ListItem","item":"https://augura.fyi/guides/tournament-bracket-generator.html","name":"Tournament bracket generator","position":3}]}</script>
 <script src="/assets/site.18f15d92.js" defer></script>
 </head>
 <body class="sky" data-page="guide">
@@ -89,8 +91,29 @@
 <main id="main" class="page">
 <p class="back"><a href="/">← Augura</a> · <a href="/guides/index.html">All guides</a></p>
 <article class="guide prose">
-<h1>Tournament bracket generator in the Augura app</h1>
-<p class="lead">Randomly seed a small single- or double-elimination tournament and tap each winner as you play. This page is a guide to the Tournament mode in the Augura iPhone app (coming soon to the App Store). There is no web version of this mode.</p>
+<h1>Tournament bracket generator</h1>
+<p class="lead">Randomly seed a small single- or double-elimination tournament and tap each winner as you play. This page has a free browser tool at the top and a guide to the Tournament mode in the Augura iPhone app (coming soon to the App Store). The browser tool is simpler than the app mode: there is no web version of the full mode.</p>
+<h2>Make a bracket here</h2>
+<section class="wtool" id="wt-bracket" data-wt="bracket" data-len="80" data-max="32" data-min="2" role="group" aria-label="Tournament bracket">
+<p>Type 2 to 32 names, one per line, and press Make bracket. The names are shuffled once into seeds. Then tap the winner of each match.</p>
+<noscript><p class="wt-nojs">This tool needs JavaScript, which is switched off in this browser.</p></noscript>
+<div class="wt-ui" hidden>
+<label for="wt-br-names">Names, one per line</label>
+<textarea id="wt-br-names" rows="6" spellcheck="false" autocomplete="off" autocapitalize="off">Player 1
+Player 2
+Player 3
+Player 4
+Player 5
+Player 6</textarea>
+<div class="wt-row"><button type="button" class="btn" id="wt-br-go">Make bracket</button></div>
+<p class="wt-err" id="wt-br-err" role="alert"></p>
+<p class="wt-meta" id="wt-br-sum" role="status" aria-live="polite"></p>
+<div id="wt-br-out"></div>
+<p class="wt-champ" id="wt-br-champ" role="status" aria-live="polite"></p>
+</div>
+<h3>What this tool does</h3>
+<ul><li>This browser version is single elimination only (the app also has double elimination). When the number of names is not a power of two, some names get a bye and go straight to the next round; the shuffle decides who.</li><li>Tap a winner again to undo. Changing a winner clears the later matches that depended on it.</li><li>2 to 32 different names. There is no printable sheet, export or round-robin.</li><li>Everything runs in this page on your device with the browser&#x27;s secure random generator. No request is sent after the page loads, no account is needed and nothing is saved: closing or reloading the tab clears it.</li></ul>
+</section>
 <h2>What it is</h2>
 <p>Enter 2 to 32 names. Augura uses the system secure random generator to set the seeds once, then keeps that draw when you leave and return. Empty places in a non-power-of-two field are explicit byes.</p>
 <h2>How to use it</h2>
