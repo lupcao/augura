@@ -1,7 +1,7 @@
 // Augura offline support for the web app and the generator pages. Same-origin only; /verify/, /press/ and range
 // requests are never touched. Only the files listed in CORE and the page's precache list are stored (no runtime
 // caching), so the cache holds the web app's own files and nothing else the visitor opens.
-var VERSION = "augura-facdb6b7473b";
+var VERSION = "augura-d8360ed4c5e1";
 var CORE = ["/assets/app.2b1d55b4.css","/assets/app.6e41f7d8.js","/assets/site.249e629f.css","/assets/site.83006240.js","/tools.js","/favicon.ico","/img/icon-64.png","/img/icon-128.png","/img/icon-192.png","/img/icon-512.png","/img/stars-a.svg","/img/stars-b.svg","/app.html","/r/","/r/r.js","/img/badges/cs.svg","/img/badges/da.svg","/img/badges/de.svg","/img/badges/el.svg","/img/badges/en.svg","/img/badges/es.svg","/img/badges/fi.svg","/img/badges/fr.svg","/img/badges/hu.svg","/img/badges/id.svg","/img/badges/it.svg","/img/badges/ja.svg","/img/badges/ko.svg","/img/badges/nb.svg","/img/badges/nl.svg","/img/badges/pl.svg","/img/badges/pt-BR.svg","/img/badges/ro.svg","/img/badges/ru.svg","/img/badges/sv.svg","/img/badges/th.svg","/img/badges/tr.svg","/img/badges/uk.svg","/img/badges/vi.svg","/img/badges/zh-Hans.svg","/img/badges/zh-Hant.svg"];
 var LANG_PREFIXES = ["de/","fr/","it/","es/","pt-br/","nl/","sv/","pl/","tr/","ru/","ja/","ko/","zh-hans/","zh-hant/","id/","vi/","th/","hi/","uk/","da/","nb/","fi/","cs/","hu/","ro/","el/"];
 
