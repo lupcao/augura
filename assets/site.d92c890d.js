@@ -15,7 +15,7 @@ function weighted(items, w) { var total = 0, i; for (i = 0; i < items.length; i+
 function $(id) { return document.getElementById(id); }
 
 // Browser language tag -> site language code (only published languages count). Never redirects.
-var SITE_LANGS = ["en","de","fr","it","es","pt-BR","nl","sv","pl","tr","ru","ja","ko","zh-Hans","zh-Hant"];
+var SITE_LANGS = ["en","de","fr","it","es","pt-BR","nl","sv","pl","tr","ru","ja","ko","zh-Hans","zh-Hant","id","vi","th","hi","uk","da","nb","fi","cs","hu","ro","el"];
 function mapLang(tag) {
   tag = String(tag || "").toLowerCase();
   var code = null;
@@ -37,8 +37,20 @@ function preferredLang() {
 // Nothing is sent anywhere. Browser storage: augura.ui.v1 is written only when the visitor clicks a choice (a
 // language, closing the banner or the app nudge); the web app's history (augura.webapp.v1) only after "Keep history
 // on this device" is turned on. The offline cache is used only by the web app and the generator pages.
+// 46.5: frame check. GitHub Pages cannot send frame-ancestors / X-Frame-Options, and a meta CSP ignores frame-ancestors,
+// so a page shown inside another site breaks out, and hides itself if the browser refuses that. A frame on
+// augura.fyi itself is fine (like frame-ancestors 'self'; the site's own browser tests load pages that way):
+// reading the top page's origin only works when it is the same site.
+try {
+  var sameSite = false;
+  try { sameSite = window.top.location.origin === window.location.origin; } catch (e) { sameSite = false; }
+  if (window.top !== window.self && !sameSite) {
+    document.documentElement.style.display = "none";
+    window.top.location = window.self.location;
+  }
+} catch (e) { document.documentElement.style.display = "none"; }
 var UI_KEY = "augura.ui.v1";
-var BANNER = {"de":["Diese Seite gibt es auch auf Deutsch.","Auf Deutsch lesen","Schließen"],"en":["This page is also available in English.","Read in English","Close"],"es":["Esta página también está disponible en español.","Leer en español","Cerrar"],"fr":["Cette page existe aussi en français.","Lire en français","Fermer"],"it":["Questa pagina è disponibile anche in italiano.","Leggi in italiano","Chiudi"],"ja":["このページは日本語でも読めます。","日本語で読む","閉じる"],"ko":["이 페이지는 한국어로도 볼 수 있어요.","한국어로 보기","닫기"],"nl":["Deze pagina is er ook in het Nederlands.","Lees in het Nederlands","Sluiten"],"pl":["Ta strona jest dostępna także po polsku.","Czytaj po polsku","Zamknij"],"pt-BR":["Esta página também está disponível em português.","Ler em português","Fechar"],"ru":["Эта страница есть и на русском.","Читать по-русски","Закрыть"],"sv":["Den här sidan finns även på svenska.","Läs på svenska","Stäng"],"tr":["Bu sayfa Türkçe olarak da mevcut.","Türkçe oku","Kapat"],"zh-Hans":["本页面也提供简体中文版。","阅读简体中文版","关闭"],"zh-Hant":["本頁面也提供繁體中文版。","閱讀繁體中文版","關閉"]};
+var BANNER = {"cs":["Tato stránka je dostupná také v češtině.","Číst česky","Zavřít"],"da":["Denne side findes også på dansk.","Læs på dansk","Luk"],"de":["Diese Seite gibt es auch auf Deutsch.","Auf Deutsch lesen","Schließen"],"el":["Αυτή η σελίδα είναι διαθέσιμη και στα ελληνικά.","Ανάγνωση στα ελληνικά","Κλείσιμο"],"en":["This page is also available in English.","Read in English","Close"],"es":["Esta página también está disponible en español.","Leer en español","Cerrar"],"fi":["Tämä sivu on saatavilla myös suomeksi.","Lue suomeksi","Sulje"],"fr":["Cette page existe aussi en français.","Lire en français","Fermer"],"hi":["यह पेज हिंदी में भी उपलब्ध है।","हिंदी में पढ़ें","बंद करें"],"hu":["Ez az oldal angolul is elérhető.","Olvasás angolul","Bezárás"],"id":["Halaman ini juga tersedia dalam bahasa Indonesia.","Baca dalam bahasa Indonesia","Tutup"],"it":["Questa pagina è disponibile anche in italiano.","Leggi in italiano","Chiudi"],"ja":["このページは日本語でも読めます。","日本語で読む","閉じる"],"ko":["이 페이지는 한국어로도 볼 수 있어요.","한국어로 보기","닫기"],"nb":["Denne siden finnes også på norsk.","Les på norsk","Lukk"],"nl":["Deze pagina is er ook in het Nederlands.","Lees in het Nederlands","Sluiten"],"pl":["Ta strona jest dostępna także po polsku.","Czytaj po polsku","Zamknij"],"pt-BR":["Esta página também está disponível em português.","Ler em português","Fechar"],"ro":["Această pagină este disponibilă și în română.","Citiți în română","Închideți"],"ru":["Эта страница есть и на русском.","Читать по-русски","Закрыть"],"sv":["Den här sidan finns även på svenska.","Läs på svenska","Stäng"],"th":["หน้านี้มีให้อ่านเป็นภาษาไทยด้วย","อ่านเป็นภาษาไทย","ปิด"],"tr":["Bu sayfa Türkçe olarak da mevcut.","Türkçe oku","Kapat"],"uk":["Ця сторінка доступна також українською.","Читати українською","Закрити"],"vi":["Trang này cũng có bằng tiếng Việt.","Đọc bằng tiếng Việt","Đóng"],"zh-Hans":["本页面也提供简体中文版。","阅读简体中文版","关闭"],"zh-Hant":["本頁面也提供繁體中文版。","閱讀繁體中文版","關閉"]};
 function uiGet() { try { var v = JSON.parse(localStorage.getItem(UI_KEY) || "{}"); return v && typeof v === "object" ? v : {}; } catch (e) { return {}; } }
 function uiSet(patch) {
   try { var v = uiGet(); for (var k in patch) if (Object.prototype.hasOwnProperty.call(patch, k)) v[k] = patch[k];
